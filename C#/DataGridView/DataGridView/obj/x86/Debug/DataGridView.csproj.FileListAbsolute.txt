@@ -1,0 +1,58 @@
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\DataGridView.exe
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\DataGridView.pdb
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\ResolveAssemblyReference.cache
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Form1.resources
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Properties.Resources.resources
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.read.1.tlog
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.write.1.tlog
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.exe
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.pdb
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\db.mdf
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\db_log.ldf
+d:\Documente Claudiu\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\DataGridView.exe.config
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\DataGridView.exe.config
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.exe
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.pdb
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\db.mdf
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\db_log.ldf
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\DataGridView.exe
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\DataGridView.pdb
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Form1.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Properties.Resources.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\DataGridView.exe.config
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\db.mdf
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\db_log.ldf
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\DataGridView.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\bin\Debug\DataGridView.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Form1.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Properties.Resources.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\DataGridView.exe.config
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.exe
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.pdb
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\db.mdf
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\db_log.ldf
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\DataGridView.exe
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\bin\Debug\DataGridView.pdb
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Form1.resources
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Properties.Resources.resources
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\DataGridView\DataGridView\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\bin\Debug\DataGridView.exe.config
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.exe
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.pdb
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\bin\Debug\db.mdf
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\bin\Debug\db_log.ldf
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\bin\Debug\DataGridView.exe
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\bin\Debug\DataGridView.pdb
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Form1.resources
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.Properties.Resources.resources
+C:\Users\Alex\Documents\Visual Studio 2012\Projects\C#\DataGridView\DataGridView\obj\x86\Debug\DataGridView.csproj.GenerateResource.Cache

@@ -1,0 +1,58 @@
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\bin\Release\Scoala.mdf
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\bin\Release\Scoala_log.ldf
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\bin\Release\Scoala.exe.config
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\bin\Release\Scoala.exe
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\bin\Release\Scoala.pdb
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\Scoala.Properties.Resources.resources
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\Scoala.Form1.resources
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\Scoala.exe
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\Scoala.pdb
+D:\Documente Claudiu\Visual Studio 2010\Projects\Scoala\Scoala\obj\x86\Release\Scoala.AdaugaClasa.resources
+H:\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.mdf
+H:\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala_log.ldf
+H:\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.exe.config
+H:\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.exe
+H:\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.pdb
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\ResolveAssemblyReference.cache
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.AdaugaClasa.resources
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.ModificaClasa.resources
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.Properties.Resources.resources
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.Form1.resources
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.StergeClasa.resources
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\GenerateResource.read.1.tlog
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\GenerateResource.write.1.tlog
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.exe
+H:\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.pdb
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.mdf
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala_log.ldf
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.exe.config
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.exe
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\bin\Release\Scoala.pdb
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.AdaugaClasa.resources
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.ModificaClasa.resources
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.Properties.Resources.resources
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.Form1.resources
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.StergeClasa.resources
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.exe
+D:\Documente Claudiu\Dropbox\Clase\Scoala\Scoala\obj\x86\Release\Scoala.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\bin\Release\Scoala.mdf
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\bin\Release\Scoala_log.ldf
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\bin\Release\Scoala.exe.config
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\bin\Release\Scoala.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\bin\Release\Scoala.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.AdaugaClasa.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.ModificaClasa.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.Properties.Resources.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.Form1.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.StergeClasa.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Scoala\Scoala\obj\x86\Release\Scoala.pdb

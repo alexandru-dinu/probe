@@ -1,0 +1,26 @@
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\ResolveAssemblyReference.cache
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\Vizulizari.Form1.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\Vizulizari.Form2.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\Vizulizari.Form3.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\Controale.Form4.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\Controale.Properties.Resources.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\GenerateResource.read.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\GenerateResource.write.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\bin\Release\Controale.exe.config
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Vizulizari\bin\Release\Controale.exe.config
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\bin\Release\Controale.exe.config
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\bin\Release\Controale.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\bin\Release\Controale.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.Form1.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.Form2.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.Form3.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.Form4.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.Properties.Resources.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.csproj.GenerateResource.Cache
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Controale Windows Form\Controale\obj\x86\Release\Controale.pdb
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Controale Windows Form\Controale\bin\Release\Controale.exe.config
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Controale Windows Form\Controale\obj\x86\Release\Controale.exe
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Controale Windows Form\Controale\obj\x86\Release\Controale.pdb

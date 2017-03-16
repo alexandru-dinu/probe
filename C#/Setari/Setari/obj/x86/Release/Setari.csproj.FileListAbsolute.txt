@@ -1,0 +1,30 @@
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\bin\Release\Setari.exe
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\bin\Release\Setari.pdb
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\Setari.Form1.resources
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\Setari.Form2.resources
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\Setari.Properties.Resources.resources
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\Setari.exe
+C:\Users\Claudiu\AppData\Local\Temporary Projects\Setari\obj\x86\Release\Setari.pdb
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\bin\Release\Setari.exe
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\bin\Release\Setari.pdb
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\Setari.Form1.resources
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\Setari.Form2.resources
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\Setari.Properties.Resources.resources
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\Setari.exe
+D:\Documente Claudiu\Visual Studio 2010\Projects\Setari\Setari\obj\x86\Release\Setari.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\bin\Release\Setari.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\bin\Release\Setari.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\ResolveAssemblyReference.cache
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\Setari.Form1.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\Setari.Form2.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\Setari.Properties.Resources.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\GenerateResource.read.1.tlog
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\GenerateResource.write.1.tlog
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\Setari.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Setari\Setari\obj\x86\Release\Setari.pdb

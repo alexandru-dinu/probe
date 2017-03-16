@@ -1,0 +1,18 @@
+﻿Build started 18-Dec-13 00:54:15.
+     1>Project "C:\Users\Alexandru\Desktop\Typedef and Define\Typedef and Define\Typedef and Define.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\Typedef and Define.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Typedef and Define.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "Typedef and Define.cpp"
+         Typedef and Define.cpp
+     1>c:\users\alexandru\desktop\typedef and define\typedef and define\typedef and define.cpp(40): warning C4244: 'argument' : conversion from 'distanta_km' to 'int', possible loss of data
+     1>c:\users\alexandru\desktop\typedef and define\typedef and define\typedef and define.cpp(40): warning C4244: 'argument' : conversion from 'kmh' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Alexandru\Desktop\Typedef and Define\Debug\Typedef and Define.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Alexandru\Desktop\Typedef and Define\Debug\Typedef and Define.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Alexandru\Desktop\Typedef and Define\Debug\Typedef and Define.lib" /MACHINE:X86 Debug\stdafx.obj
+         "Debug\Typedef and Define.obj"
+         Typedef and Define.vcxproj -> C:\Users\Alexandru\Desktop\Typedef and Define\Debug\Typedef and Define.exe
+     1>Done Building Project "C:\Users\Alexandru\Desktop\Typedef and Define\Typedef and Define\Typedef and Define.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.57

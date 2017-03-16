@@ -1,0 +1,9 @@
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\bin\Release\Calculator.exe
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\bin\Release\Calculator.pdb
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\ResolveAssemblyReference.cache
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\Calculator.Form1.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\Calculator.Properties.Resources.resources
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\Calculator.exe
+F:\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\Calculator\Calculator\obj\x86\Release\Calculator.pdb

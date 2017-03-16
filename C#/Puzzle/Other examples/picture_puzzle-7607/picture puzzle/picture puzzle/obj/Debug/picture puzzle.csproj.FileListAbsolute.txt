@@ -1,0 +1,10 @@
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\bin\Debug\picture puzzle.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\bin\Debug\picture puzzle.pdb
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\obj\Debug\picture puzzle.csprojResolveAssemblyReference.cache
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\obj\Debug\picture_puzzle.formPicturePuzzle.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\obj\Debug\picture_puzzle.Properties.Resources.resources
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\obj\Debug\picture puzzle.csproj.GenerateResource.Cache
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\obj\Debug\picture puzzle.exe
+D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\picture puzzle\picture puzzle\obj\Debug\picture puzzle.pdb
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Puzzle\picture_puzzle-7607\picture puzzle\picture puzzle\obj\Debug\picture puzzle.exe
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Puzzle\picture_puzzle-7607\picture puzzle\picture puzzle\obj\Debug\picture puzzle.pdb

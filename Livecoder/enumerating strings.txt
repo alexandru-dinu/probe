@@ -1,0 +1,24 @@
+TM will halt and accept any strings that belongs to the language
+The trick is to avoid getting hung up on strings that will make the TM loop
+
+W = empty set
+N = 0
+
+for i = 1 to Aleph-Naught
+	s = next string in Sigma*
+	W.append(s)
+
+	TM = init a TM for s
+
+	for each w in W
+		let TM(w) move one step
+
+		if(TM(w) halts)
+			accept / reject (w)
+
+			if(w is accepted)
+				N = N + 1
+				w is the N-th string of the language
+
+			W.remove(s)
+

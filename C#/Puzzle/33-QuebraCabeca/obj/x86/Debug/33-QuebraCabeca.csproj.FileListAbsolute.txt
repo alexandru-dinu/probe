@@ -1,0 +1,10 @@
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\obj\x86\Debug\33-QuebraCabeca.exe
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\obj\x86\Debug\33-QuebraCabeca.pdb
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\bin\Debug\33-QuebraCabeca.exe
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\bin\Debug\33-QuebraCabeca.pdb
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\obj\x86\Debug\_33_QuebraCabeca.Form1.resources
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\obj\x86\Debug\_33_QuebraCabeca.Form2.resources
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\obj\x86\Debug\_33_QuebraCabeca.Properties.Resources.resources
+C:\Users\Claudiu\Desktop\34-QuebraCabeca\33-QuebraCabeca\obj\x86\Debug\33-QuebraCabeca.csproj.GenerateResource.Cache
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Puzzle\33-QuebraCabeca\obj\x86\Debug\33-QuebraCabeca.exe
+C:\Users\Alexandru Dinu\Documents\Visual Studio 2010\Projects\Puzzle\33-QuebraCabeca\obj\x86\Debug\33-QuebraCabeca.pdb

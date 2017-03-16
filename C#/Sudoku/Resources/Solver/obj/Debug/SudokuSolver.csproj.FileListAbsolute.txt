@@ -1,0 +1,9 @@
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\bin\Debug\SudokuSolver.exe
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\bin\Debug\SudokuSolver.pdb
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\SudokuSolver.csprojResolveAssemblyReference.cache
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\PeterMoon.GamesUtils.SudokuSolver.Properties.Resources.resources
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\PeterMoon.GamesUtils.SudokuSolver.SudokuDetails.resources
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\PeterMoon.GamesUtils.SudokuSolver.SudokuForm.resources
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\SudokuSolver.csproj.GenerateResource.Cache
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\SudokuSolver.exe
+C:\Users\Alexandru\Desktop\Sudoku Project\Solver\obj\Debug\SudokuSolver.pdb
