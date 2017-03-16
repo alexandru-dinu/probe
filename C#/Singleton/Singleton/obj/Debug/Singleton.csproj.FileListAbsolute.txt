@@ -1,6 +1,0 @@
-D:\Programming\C#\Singleton\Singleton\bin\Debug\Singleton.exe.config
-D:\Programming\C#\Singleton\Singleton\bin\Debug\Singleton.exe
-D:\Programming\C#\Singleton\Singleton\bin\Debug\Singleton.pdb
-D:\Programming\C#\Singleton\Singleton\obj\Debug\Singleton.csprojResolveAssemblyReference.cache
-D:\Programming\C#\Singleton\Singleton\obj\Debug\Singleton.exe
-D:\Programming\C#\Singleton\Singleton\obj\Debug\Singleton.pdb

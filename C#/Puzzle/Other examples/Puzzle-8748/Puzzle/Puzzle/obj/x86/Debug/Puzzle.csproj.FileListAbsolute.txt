@@ -1,8 +1,0 @@
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\bin\Debug\Puzzle.exe
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\bin\Debug\Puzzle.pdb
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\obj\x86\Debug\_Puzzle.Form1.resources
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\obj\x86\Debug\_Puzzle.Form2.resources
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\obj\x86\Debug\_Puzzle.Properties.Resources.resources
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\obj\x86\Debug\Puzzle.csproj.GenerateResource.Cache
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\obj\x86\Debug\Puzzle.exe
-D:\Documente Claudiu\Dropbox\4. Resurse materiale proprii\Proiecte si resurse\C#\x puzzle\Puzzle\Puzzle\obj\x86\Debug\Puzzle.pdb
