@@ -25,11 +25,9 @@ list merge(list l1, list l2)
     if (empty(l2))
         return l1;
 
-    if (head(l1) < head(l2))
-        cons(head(l1), merge(tail(l1), l2))
-    else
-        cons(head(l2), merge(l1, tail(l2)));
-
+    return (head(l1) < head(l2)) ?
+            cons(head(l1), merge(tail(l1), l2)) :
+            cons(head(l2), merge(l1, tail(l2)));
 }
 
 list mergesort(list l)
@@ -38,7 +36,6 @@ list mergesort(list l)
 
     switch(length(l)) {
         case 0:
-            return l;
         case 1:
             return l;
         default:
@@ -53,28 +50,24 @@ int main() {
 
     list v1 = {10, 9, 8, 7, 7, 7, 5, 1, 2, 3};
 
-    echo(length(v1));
+    list v2(N);
 
-    foreach(echo, filter(even, map(inc, tail(mergesort(v1)))));
+    std::random_device rd;
+    std::default_random_engine dre(rd());
+    std::uniform_int_distribution<int> uid(0,1000);
 
-    echo(length(v1));
+    for (int i = 0; i < N; i++) {
+        v2[i] = uid(dre);
+    }
 
-    // list v2(N);
+    auto begin = std::chrono::high_resolution_clock::now();
 
-    // std::random_device rd;
-    // std::default_random_engine dre(rd());
-    // std::uniform_int_distribution<int> uid(0,1000);
+    mergesort(v2);
 
-    // for (int i = 0; i < N; i++) {
-    //     v2[i] = uid(dre);
-    // }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() * 1e-6 << "ms" << std::endl;
 
-    // auto begin = std::chrono::high_resolution_clock::now();
-
-    // mergesort(v2);
-
-    // auto end = std::chrono::high_resolution_clock::now();
-    // std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() * 1e-6 << "ms" << std::endl;
+    // foreach(echo, v2);
 
     return 0;
 }
