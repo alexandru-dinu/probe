@@ -32,49 +32,71 @@ namespace func {
 		return [&pred](ArgType t) { return !pred(t); };
 	}
 
+
+
 	template <typename Elem, typename Collection>
 	Collection cons(Elem x, Collection c)
 	{
-		Collection r = c;
-		Collection dummy;
+		c.insert(c.begin(), x);
+		return c;
+	}
 
-		r.insert (r.begin(), x);
+	template <typename Elem, typename Collection>
+	void cons_r(Elem x, Collection &c)
+	{
+		c.insert (c.begin(), x);
+	}
 
-		c.swap(dummy);
-		return r;
+
+
+	template <typename Collection>
+	Collection take(unsigned int p, Collection c)
+	{
+		p = (p >= c.size()) ? c.size() : p;
+		c.erase(c.begin() + p, c.end());
+		return c;
 	}
 
 	template <typename Collection>
-	Collection take(int p, Collection c)
+	void take_r(unsigned int p, Collection &c)
 	{
-		Collection r = c;
-		Collection dummy;
-
 		p = (p >= c.size()) ? c.size() : p;
-		r.erase(r.begin() + p, r.end());
+		c.erase(c.begin() + p, c.end());
+	}
 
-		c.swap(dummy);
-		return r;
+
+
+	template <typename Collection>
+	Collection drop(unsigned int p, Collection c)
+	{
+		p = (p >= c.size()) ? c.size() : p;
+		c.erase(c.begin(), c.begin() + p);
+		return c;
 	}
 
 	template <typename Collection>
-	Collection drop(int p, Collection c)
+	void drop_r(unsigned int p, Collection &c)
 	{
-		Collection r = c;
-		Collection dummy;
-
 		p = (p >= c.size()) ? c.size() : p;
-		r.erase(r.begin(), r.begin() + p);
-
-		c.swap(dummy);
-		return r;
+		c.erase(c.begin(), c.begin() + p);
 	}
+
+
 
 	template <typename Collection>
 	Collection tail(Collection c)
 	{
-		return drop(1, c);
+		c.erase(c.begin(), c.begin() + 1);
+		return c;
 	}
+
+	template <typename Collection>
+	void tail_r(Collection &c)
+	{
+		c.erase(c.begin(), c.begin() + 1);
+	}
+
+
 
 	template <typename UnaryOperator, typename Collection>
 	void foreach(UnaryOperator op, Collection c)
