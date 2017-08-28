@@ -9,7 +9,7 @@
 
 using namespace func;
 
-#define N 50000
+#define N 100
 
 auto echo = [](int x) {std::cout << x << std::endl;};
 auto inc = [](int x) {return x + 1;};
@@ -35,17 +35,15 @@ std::vector<T> merge(std::vector<T> v1, std::vector<T> v2)
 }
 
 template <typename T>
-std::vector<T> mergesort(std::vector<T> v)
+std::vector<T> mergesort(std::vector<T> &&v)
 {
     if (length(v) <= 1)
         return v;
 
     int mid = length(v) / 2;
 
-    std::vector<T> l = take(mid, v);
-    std::vector<T> r = drop(mid, v);
-
-    return merge(mergesort(std::move(l)), mergesort(std::move(r)));
+    return merge(mergesort(std::move(take(mid, v))),
+                 mergesort(std::move(drop(mid, v))));
 }
 
 
@@ -58,7 +56,7 @@ int main()
 
     auto begin = std::chrono::high_resolution_clock::now();
 
-    std::vector<int> s = mergesort(v);
+    std::vector<int> s = mergesort(std::move(v));
 
     auto end = std::chrono::high_resolution_clock::now();
     std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() * 1e-6 << "ms" << std::endl;
