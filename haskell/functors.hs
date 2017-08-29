@@ -5,6 +5,11 @@
 import Control.Applicative
 
 -- fmap :: (a -> b) -> f a -> f b
+-- class Functor f where
+-- 	fmap :: (a -> b) -> f a -> f b
+
+-- 	(<$>) :: a -> f b -> f a
+-- 	(<$>) = fmap . const
 
 data Something a = None | Valid a deriving Show
 
@@ -81,3 +86,25 @@ action = do
 -- equivalent expression
 action' :: IO String
 action' = (++) <$> getLine <*> getLine
+
+
+
+-- exercises
+
+-- 1. insert an element into a list
+consF :: (Functor f) => t -> f [t] -> f [t]
+consF x lst = ((:) x) <$> lst
+
+consA :: (Applicative a) => t -> a [t] -> a [t]
+consA x lst = pure ((:) x) <*> lst
+
+-- 2. reverse a list
+revF :: (Functor f) => f [t] -> f [t]
+revF lst = (foldl (\acc x -> x:acc) []) <$> lst
+
+revA :: (Applicative a) => a [t] -> a [t]
+revA lst = pure (foldl (\acc x -> x:acc) []) <*> lst
+
+-- 3. append two lists
+appendA :: (Applicative f) => f [t] -> f [t] -> f [t]
+appendA l1 l2 = (++) <$> l1 <*> l2
