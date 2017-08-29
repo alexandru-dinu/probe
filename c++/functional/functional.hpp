@@ -9,19 +9,19 @@
 namespace func
 {
 	template <typename T>
-	bool empty(std::vector<T> &c)
+	bool empty(const std::vector<T> &c)
 	{
 		return c.size() == 0;
 	}
 
 	template <typename T>
-	uint length(std::vector<T> &c)
+	uint length(const std::vector<T> &c)
 	{
 		return c.size();
 	}
 
 	template <typename T>
-	T head(std::vector<T> &c)
+	T head(const std::vector<T> &c)
 	{
 		return c.at(0);
 	}
@@ -40,13 +40,6 @@ namespace func
 	}
 
 	template <typename T>
-	std::vector<T>& tail_ms(std::vector<T> &c)
-	{
-		c.erase(c.begin(), c.begin() + 1);
-		return c;
-	}
-
-	template <typename T>
 	std::vector<T> take(uint n, std::vector<T> &c)
 	{
 		n = (n >= c.size()) ? c.size() : n;
@@ -60,6 +53,12 @@ namespace func
 		n = (n >= c.size()) ? c.size() : n;
 		std::vector<T> r(c.begin() + n, c.end());
 		return r;
+	}
+
+	template <typename T>
+	std::vector<T> tail_ms(std::vector<T> &c)
+	{
+		return drop(1, c);
 	}
 
 	// template <typename ArgType, typename Pred>

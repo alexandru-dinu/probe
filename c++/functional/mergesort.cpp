@@ -9,8 +9,6 @@
 
 using namespace func;
 
-#define N 100
-
 auto echo = [](int x) {std::cout << x << std::endl;};
 auto inc = [](int x) {return x + 1;};
 auto sub = [](int x, int y) {return x - y;};
@@ -47,8 +45,9 @@ std::vector<T> mergesort(std::vector<T> &&v)
 }
 
 
-int main()
+int main(int argc, char const *argv[])
 {
+    int N = std::stoi(argv[1]);
     std::vector<int> v(N);
 
     for (int i = 0; i < N; i++)
