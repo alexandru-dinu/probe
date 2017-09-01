@@ -5,23 +5,40 @@
 -- Applicative functors
 import Control.Applicative
 
+<<<<<<< HEAD
+
+-- helpful for understanding partial application
+instance Show (a -> b) where
+	show f = "unary_function"
+
+=======
 instance Show (a -> b) where
 	show f = "unary_function"
 
 -- fmap :: (a -> b) -> f a -> f b
+>>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 -- class Functor f where
 -- 	fmap :: (a -> b) -> f a -> f b
 
 -- (<$>) :: (Functor f) => (a -> b) -> f a -> f b
 -- f <$> x = fmap f x
+<<<<<<< HEAD
 
+-- (<&) operator in Functor class ((<$) = fmap . const)
+replaceAll :: (Functor f) => a -> f b -> f a
+replaceAll value container = fmap (const value) container
+
+=======
+>>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
+
+-- example 1 - Maybe-like data type
 data Something a = None | Valid a deriving Show
 
 instance Functor Something where
 	fmap f (Valid x) = Valid (f x)
 	fmap f None = None
 
-
+-- example 2 - Tree
 data Tree a = Nil | Leaf a | Node a (Tree a) (Tree a) deriving Show
 
 instance Functor Tree where
@@ -30,9 +47,7 @@ instance Functor Tree where
 	fmap f (Node a l r) = Node (f a) (fmap f l) (fmap f r)
 
 
--- (<&) operator in Functor class ((<$) = fmap . const)
-replaceAll :: (Functor f) => a -> f b -> f a
-replaceAll value container = fmap (const value) container
+
 
 
 
@@ -54,11 +69,13 @@ instance Applicative Something where
 	None <*> _ = None
 	(Valid f) <*> x = fmap f x
 
+
+<<<<<<< HEAD
+
 -- examples
-
--- pure "Hey" :: [String] yields ["Hey"]
--- pure "Hey" :: Maybe String yields Just "Hey"
-
+-- doing k <$> f <*> g creates a function
+-- that will call k with the eventual results from f and g
+=======
 --	Valid (*2) <*> Valid 50 yields (Valid 100)
 -- [(+1), (+2)] <*> [10,12] yields [11, 13, 12, 14]
 -- pure (+) <*> Just 3 <*> Just 5 yields Just 8
@@ -66,13 +83,18 @@ instance Applicative Something where
 -- (+1) <$> Valid 10 yields Valid 11
 -- Valid (+1) <*> Valid 10 yields Valid 11
 -- (++) <$> Just "hey" <*> Just " you" yields Just "hey you"
+>>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
--- instance Applicative [] where
---     pure x = [x]
---     fs <*> xs = [f x | f <- fs, x <- xs]
+e1 = pure "Hey" :: [String] -- yields ["Hey"]
+e2 = pure "Hey" :: Maybe String -- yields Just "Hey"
 
--- (*) <$> [2,3] <*> [1,2,3] yields [2,4,6,3,6,9]
+e3 = Valid (*2) <*> Valid 50 -- yields (Valid 100)
+e4 = [(+1), (+2)] <*> [10,12] -- yields [11, 13, 12, 14]
+e5 = pure (+) <*> Just 3 <*> Just 5 --  yields Just 8
 
+e6 = (+1) <$> Valid 10 -- yields Valid 11
+e7 = Valid (+1) <*> Valid 10 -- yields Valid 11
+e8 = (++) <$> Just "hey" <*> Just " you" -- yields Just "hey you"
 
 -- do notation
 action :: IO String
@@ -108,13 +130,30 @@ appendA l1 l2 = (++) <$> l1 <*> l2
 
 
 -- zipping lists is done with ZipLists type
+<<<<<<< HEAD
+e9 = \f l1 l2 -> getZipList $ f <$> ZipList l1 <*> ZipList l2
+
+
+=======
 -- getZipList $ f <$> ZipList l1 <*> ZipList l2
+>>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
 -- another example of an Applicative instance
 -- instance Applicative ((->) r) where
 -- 	-- pure :: a -> (r -> a)
 -- 	pure x = (\_ -> x)
 
+<<<<<<< HEAD
+-- 	-- <*> :: ((->) r) (a -> b) -> ((->) r) a -> ((->) r) b
+-- 	-- <*> :: (r -> a -> b) -> (r -> a) -> (r -> b)
+-- 	f <*> g = \x -> f x (g x)
+
+
+-- examples
+e10 = (-) <*> (+1) $ 5 -- yields -1 because of (-) 5 ((+1) 5)
+e11 = (+) <$> (+3) <*> (*100) $ 5 -- yields 508 (5+3, 5*100 -> 8 + 500)
+e12 = (\x y z -> [x,y,z]) <$> (+3) <*> (*2) <*> (/2) $ 5 -- yields [8.0, 10.0, 2.5]
+=======
 -- 	-- <*p> :: ((->) r) (a -> b) -> ((->) r) a -> ((->) r) b
 -- 	f <*> g = \x -> f x (g x)
 
@@ -125,6 +164,7 @@ appendA l1 l2 = (++) <$> l1 <*> l2
 -- (+) <$> (+3) <*> (*100) $ 5 yields 508 (5+3, 5*100 -> 8 + 500)
 -- (\x y z -> [x,y,z]) <$> (+3) <*> (*2) <*> (/2) $ 5 yields [8.0, 10.0, 2.5]
 
+>>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
 
 -- liftA2 :: (Applicative f) => (a -> b -> c) -> f a -> f b -> f c
@@ -132,7 +172,10 @@ appendA l1 l2 = (++) <$> l1 <*> l2
 
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 data Choose b a = Good a | Bad b deriving Show
 
 instance Functor (Choose a) where
