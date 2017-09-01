@@ -172,12 +172,41 @@ instance (Functor f, Functor g) => Functor (Compose f g) where
 	-- Compose :: f (g a) -> Compose f g a
 	fmap func (Compose x) = Compose (fmap (fmap func) x)
 
+	-- applying fmap wraps the value into the first context
+	-- applying fmap fmap wraps the value into the second context
+
 instance (Applicative f, Applicative g) => Applicative (Compose f g) where
 	-- pure :: a -> Compose f g a
 	pure = Compose . pure . pure
+	Compose fx <*> Compose gx = Compose (liftA2 (<*>) fx gx)
 
-	Compose fx <*> Compose gx = Compose ((<*>) <$> fx <*> gx)
 
 
 -- Give an example of a type of kind * -> *
 -- which cannot be made an instance of Functor (without using undefined).
+
+data F a = F { getFunc :: (a -> Int)} deriving Show
+
+-- if we write "deriving Functor":
+-- Can't make a derived instance of ‘Functor F’:
+-- Constructor ‘F’ must not use the type variable in a function argument
+
+-- The problem is that the standard Functor class actually represents
+-- covariant functors (fmap lifts its argument to f a -> f b),
+-- but there is no way you can compose a -> b and a -> Int to get a function of type b -> Int
+
+-- solution: Contravariant Functors
+class ContravariantFunctor k where
+	contramap :: (a -> b) -> k b -> k a
+
+	(<^$>) :: (ContravariantFunctor k) => (a -> b) -> k b -> k a
+	f <^$> x = contramap f x
+
+
+instance ContravariantFunctor F where
+	-- func :: b -> Int
+	-- f :: a -> b
+	contramap f (F func) = F (func . f)
+
+-- example
+e13 = (getFunc $ contramap (*2) (F (\x -> x + 5))) 101 -- yields ((+5) ((*2) 101)) = 207
