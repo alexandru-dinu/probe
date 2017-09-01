@@ -172,8 +172,8 @@ instance (Functor f, Functor g) => Functor (Compose f g) where
 	-- Compose :: f (g a) -> Compose f g a
 	fmap func (Compose x) = Compose (fmap (fmap func) x)
 
-	-- applying fmap wraps the value into the first context
-	-- applying fmap fmap wraps the value into the second context
+	-- applying fmap wraps the value into the first context (g)
+	-- applying fmap fmap wraps the value into the second context (f)
 
 instance (Applicative f, Applicative g) => Applicative (Compose f g) where
 	-- pure :: a -> Compose f g a
@@ -210,3 +210,36 @@ instance ContravariantFunctor F where
 
 -- example
 e13 = (getFunc $ contramap (*2) (F (\x -> x + 5))) 101 -- yields ((+5) ((*2) 101)) = 207
+
+
+-- another example
+-- we define a data type that abstracts sets (a set is defined by a boolean predicate)
+data Set a = Set (a -> Bool)
+
+-- for example, the set of all even numbers is Set even
+-- the set of all numbers larger than 1337 is Set (> 1337)
+
+-- membership of a value x in the set can be established by applying the predicate to x
+memberOf :: (Set a) -> a -> Bool
+memberOf (Set pred) x = pred x
+
+reu :: (Set a) -> (Set a) -> (Set a)
+reu (Set p1) (Set p2) = Set (\x -> (||) (p1 x) (p2 x)) 
+
+inter :: (Set a) -> (Set a) -> (Set a)
+inter (Set p1) (Set p2) = Set (\x -> (&&) (p1 x) (p2 x))
+
+-- we notice that Set a is similar to F a, so it can't derive Functor class
+-- we must make an instance of a ContravariantFunctor
+
+instance ContravariantFunctor Set where
+	contramap :: (a -> b) -> Set b -> Set a
+	contramap f (Set pred) = Set (pred . f)
+
+-- now, based on this instance, we can create a new Set that alters the input in some way (applying f) 
+-- before calling the original Set's predicate
+
+-- we can construct Set even like this: contramap (+1) (Set even)
+-- the set of all natural numbers: reu (Set even) ((+1) <^$> (Set even))
+
+
