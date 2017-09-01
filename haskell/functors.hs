@@ -5,31 +5,21 @@
 -- Applicative functors
 import Control.Applicative
 
-<<<<<<< HEAD
 
 -- helpful for understanding partial application
 instance Show (a -> b) where
 	show f = "unary_function"
 
-=======
-instance Show (a -> b) where
-	show f = "unary_function"
-
--- fmap :: (a -> b) -> f a -> f b
->>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 -- class Functor f where
 -- 	fmap :: (a -> b) -> f a -> f b
 
 -- (<$>) :: (Functor f) => (a -> b) -> f a -> f b
 -- f <$> x = fmap f x
-<<<<<<< HEAD
 
 -- (<&) operator in Functor class ((<$) = fmap . const)
 replaceAll :: (Functor f) => a -> f b -> f a
 replaceAll value container = fmap (const value) container
 
-=======
->>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
 -- example 1 - Maybe-like data type
 data Something a = None | Valid a deriving Show
@@ -45,8 +35,6 @@ instance Functor Tree where
 	fmap f Nil = Nil
 	fmap f (Leaf a) = Leaf (f a)
 	fmap f (Node a l r) = Node (f a) (fmap f l) (fmap f r)
-
-
 
 
 
@@ -70,20 +58,10 @@ instance Applicative Something where
 	(Valid f) <*> x = fmap f x
 
 
-<<<<<<< HEAD
 
 -- examples
 -- doing k <$> f <*> g creates a function
 -- that will call k with the eventual results from f and g
-=======
---	Valid (*2) <*> Valid 50 yields (Valid 100)
--- [(+1), (+2)] <*> [10,12] yields [11, 13, 12, 14]
--- pure (+) <*> Just 3 <*> Just 5 yields Just 8
-
--- (+1) <$> Valid 10 yields Valid 11
--- Valid (+1) <*> Valid 10 yields Valid 11
--- (++) <$> Just "hey" <*> Just " you" yields Just "hey you"
->>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
 e1 = pure "Hey" :: [String] -- yields ["Hey"]
 e2 = pure "Hey" :: Maybe String -- yields Just "Hey"
@@ -130,20 +108,15 @@ appendA l1 l2 = (++) <$> l1 <*> l2
 
 
 -- zipping lists is done with ZipLists type
-<<<<<<< HEAD
 e9 = \f l1 l2 -> getZipList $ f <$> ZipList l1 <*> ZipList l2
 
 
-=======
--- getZipList $ f <$> ZipList l1 <*> ZipList l2
->>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
 -- another example of an Applicative instance
 -- instance Applicative ((->) r) where
 -- 	-- pure :: a -> (r -> a)
 -- 	pure x = (\_ -> x)
 
-<<<<<<< HEAD
 -- 	-- <*> :: ((->) r) (a -> b) -> ((->) r) a -> ((->) r) b
 -- 	-- <*> :: (r -> a -> b) -> (r -> a) -> (r -> b)
 -- 	f <*> g = \x -> f x (g x)
@@ -153,29 +126,12 @@ e9 = \f l1 l2 -> getZipList $ f <$> ZipList l1 <*> ZipList l2
 e10 = (-) <*> (+1) $ 5 -- yields -1 because of (-) 5 ((+1) 5)
 e11 = (+) <$> (+3) <*> (*100) $ 5 -- yields 508 (5+3, 5*100 -> 8 + 500)
 e12 = (\x y z -> [x,y,z]) <$> (+3) <*> (*2) <*> (/2) $ 5 -- yields [8.0, 10.0, 2.5]
-=======
--- 	-- <*p> :: ((->) r) (a -> b) -> ((->) r) a -> ((->) r) b
--- 	f <*> g = \x -> f x (g x)
-
-
--- doing k <$> f <*> g creates a function that will call k with the eventual results from f and g
-
--- example
--- (+) <$> (+3) <*> (*100) $ 5 yields 508 (5+3, 5*100 -> 8 + 500)
--- (\x y z -> [x,y,z]) <$> (+3) <*> (*2) <*> (/2) $ 5 yields [8.0, 10.0, 2.5]
-
->>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 
 
 -- liftA2 :: (Applicative f) => (a -> b -> c) -> f a -> f b -> f c
 -- liftA2 f a b = f <$> a <*> b
 
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> fc1eccbffa0b8eeb64c6d4e5a8fde27dbbaad8e0
 data Choose b a = Good a | Bad b deriving Show
 
 instance Functor (Choose a) where
