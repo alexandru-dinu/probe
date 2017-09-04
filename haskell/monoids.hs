@@ -9,9 +9,10 @@ import qualified Data.Foldable as F
 
 -- class Monoid m where  
 --     mempty :: m  
---     mappend :: m -> m -> m  
+--     mappend :: m -> m -> m     
 --     mconcat :: [m] -> m  
 --     mconcat = foldr mappend mempty 
+-- (<>): infix synonym for mappend
 
 -- instance Monoid Ordering where
 --     mempty = EQ
@@ -41,8 +42,8 @@ import qualified Data.Foldable as F
 -- Ordering Monoid is particularly useful for "appending" sorting criteria
 -- most important -> least important
 compareStrings :: String -> String -> Ordering
-compareStrings s1 s2 = (length s1 `compare` length s2) `mappend`
-                       (vowels s1 `compare` vowels s2) `mappend`
+compareStrings s1 s2 = (length s1 `compare` length s2) <>
+                       (vowels s1 `compare` vowels s2) <>
                        (s1 `compare` s2)
                     where vowels = length . filter (`elem` "aeiou")
 
@@ -104,7 +105,7 @@ testTree = Node 5
 instance F.Foldable Tree where
     -- foldMap :: (Monoid m, Foldable t) => (a -> m) -> t a -> m
     foldMap f Nil = mempty
-    foldMap f (Node x l r) = F.foldMap f l `mappend` f x `mappend` F.foldMap f r
+    foldMap f (Node x l r) = F.foldMap f l <> f x <> F.foldMap f r
 
 
 -- TODO
