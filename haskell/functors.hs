@@ -8,7 +8,7 @@ import Control.Applicative
 
 -- helpful for understanding partial application
 instance Show (a -> b) where
-	show f = "unary_function"
+	show f = "<unary_function>"
 
 -- class Functor f where
 -- 	fmap :: (a -> b) -> f a -> f b
@@ -214,7 +214,7 @@ e13 = (getFunc $ contramap (*2) (F (\x -> x + 5))) 101 -- yields ((+5) ((*2) 101
 
 -- another example
 -- we define a data type that abstracts sets (a set is defined by a boolean predicate)
-data Set a = Set (a -> Bool)
+data Set a = Set { getPred :: (a -> Bool)} deriving Show
 
 -- for example, the set of all even numbers is Set even
 -- the set of all numbers larger than 1337 is Set (> 1337)
