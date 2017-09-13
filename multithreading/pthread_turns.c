@@ -45,9 +45,8 @@ int main(int argc, char const *argv[])
 
 		printf("\n");
 	}
-
-
-	pthread_exit(NULL);
+	
+	return 0;
 }
 
 
