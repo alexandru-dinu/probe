@@ -48,27 +48,31 @@ def print_tree_ex(tree, indent):
 
 
 def solve(tree, target):
+    solutions = []
     [val, fname, kids, path] = tree
 
     if val == target:
-        print " | ".join(path[:])
+        return [" | ".join(path)]
 
     for k in kids:
-        solve(k, target)
+        s = solve(k, target)
+        solutions += s if s != [] else []
+
+    return solutions
 
 
 """
 Game parameters
 """
-initial = 1001
-target = 210
-moves = 5
+initial = 356
+target = 121
+moves = 4
 ops = {
     # "*2" : lambda x : x  * 2,
     # "10" : lambda x : int(str(x) + ('10')),
     # "^3" : lambda x : int(x ** 3),
     # "10->1" : lambda x : int(str(x).replace('10', '1')),
-    # "SUM" : lambda x : sign(x) * sum([int(c) for c in strip_sign(str(x))])
+    #"SUM" : lambda x : sign(x) * sum([int(c) for c in strip_sign(str(x))]),
 
     # "-9" : lambda x : x - 9,
     # "*3" : lambda x : x * 3,
@@ -84,9 +88,10 @@ ops = {
     # "*3" : lambda x : x * 3,
     # "Rev" : lambda x : sign(x) * int(strip_sign(str(x))[::-1])
 
-    "+2" : lambda x : x + 2,
-    "12->0" : lambda x : int(str(x).replace('12', '0')),
-    #"S<" : lambda x : sign(x) * int(strip_sign(str(x))[1:] + strip_sign(str(x))[0]),
+    "-2" : lambda x : x - 2,
+    "/3" : lambda x : x / 3,
+    # "0" : lambda x : int(str(x) + ('0')),
+    #"S<" : lambda x : sign(x) * int(strip_sign(str(x))[1:] + strip_sign(str(x))[0]) 
     "S>" : lambda x : int(strip_sign(str(x))[len(strip_sign(str(x)))-1] + strip_sign(str(x))[0:len(strip_sign(str(x)))-1])   
 }
 
@@ -95,4 +100,6 @@ if __name__ == '__main__':
 
     tree = cons_tree(initial, target, moves)
     #print_tree(tree)
-    solve(tree, target)
+    
+    for solution in solve(tree, target):
+        print solution
