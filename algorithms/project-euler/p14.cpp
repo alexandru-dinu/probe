@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include <map>
+#include <stdint.h>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ int main(int argc, char const *argv[])
 				break;
 			}
 
-			if((x & 1) == 0)
+			if(!(x & 1))
 				x = x / 2;
 			else
 				x = 3 * x + 1;
