@@ -6,57 +6,65 @@
 #include <deque>
 #include <thread>
 
-struct data {
+// message structure that is produced / consumed
+struct msg {
     int x, y;
     std::string s;
 
-    data() : s("test") {
+    msg() : s("test") {
         x = std::rand() % 1000000;
         y = std::rand() % 1000000;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const struct data d) {
+    friend std::ostream& operator<<(std::ostream& os, const struct msg d) {
         os << d.x << ", " << d.y << ", " << d.s << "\n";
+
+        return os;
     }
 };
 
 
-typedef struct data elem_t;
-
+// Queue that holds produced items
 template <typename T>
-class Buffer 
+class MessageQueue 
 {
 public:
-    Buffer(): m_size(1) {}
-    Buffer(int s): m_size(s) {}
+    MessageQueue(): m_capacity(1) {}
+    MessageQueue(size_t s): m_capacity(s) {}
 
+    // add an item at the front of the queue
     void add(T x) {
-        while (true) {
-            std::unique_lock<std::mutex> locker(m_mtx);
-            m_cond.wait(locker, [this](){return m_buffer.size() < m_size;});
-           
-            m_buffer.push_back(x);
-            
-            locker.unlock();
-            m_cond.notify_all();
-
-            return;
-        }
+        std::unique_lock<std::mutex> locker{m_mtx};
+        m_cond.wait(locker, [this](){return m_buffer.size() < m_capacity;});
+        
+        m_buffer.push_front(std::move(x));
+        
+        locker.unlock();
+        m_cond.notify_one();
     }
 
+    void add_move(T&& x) {
+        std::unique_lock<std::mutex> locker{m_mtx};
+        m_cond.wait(locker, [this](){return m_buffer.size() < m_capacity;});
+        
+        m_buffer.push_front(std::move(x));
+        
+        locker.unlock();
+        m_cond.notify_one();
+    }
+
+    // remove an item from the end of the queue 
     T remove() {
-        while (true) {
-            std::unique_lock<std::mutex> locker(m_mtx);
-            m_cond.wait(locker, [this](){return m_buffer.size() > 0;});
+        std::unique_lock<std::mutex> locker(m_mtx);
+        m_cond.wait(locker, [this](){return m_buffer.size() > 0;});
 
-            T x = m_buffer.back();
-            m_buffer.pop_back();
+        T x = m_buffer.back();
+        m_buffer.pop_back();
 
-            locker.unlock();
-            m_cond.notify_all();
+        locker.unlock();
+        m_cond.notify_one();
 
-            return x;
-        }
+        return x;
     }
 
 private:
@@ -64,24 +72,23 @@ private:
     std::condition_variable m_cond;
 
     std::deque<T> m_buffer;
-    unsigned int m_size;
+    size_t m_capacity;
 };
 
 
-
-template <typename T>
-class Producer
+// concrete message producer
+class MessageProducer
 {
 public:
-    Producer() : m_buf(nullptr) {}
-    Producer(std::string&& id, Buffer<T> *buf) : m_id(id), m_buf(buf) {}
+    MessageProducer(std::string&& id, MessageQueue<struct msg> &buf) 
+    : m_id(std::move(id)), m_buf(buf) {}
 
     void produce() {
         while (true) {
-            T x = T();
+            struct msg x{};
             
-            m_buf->add(x);
-            std::cout << x;
+            m_buf.add(x);
+            std::printf("+ %d\n", x.x);
 
             int sleep = std::rand() % 1000 + 10;
             std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
@@ -89,23 +96,22 @@ public:
     }
 
 private:
-    Buffer<T> *m_buf;
     std::string m_id;
+    MessageQueue<struct msg> &m_buf;
 };
 
 
 
-template <typename T = int>
-class Consumer
+class MessageConsumer
 {
 public:
-    Consumer() : m_buf(nullptr) {}
-    Consumer(std::string&& id, Buffer<T> *buf) : m_id(id), m_buf(buf) {}
+    MessageConsumer(std::string&& id, MessageQueue<struct msg> &buf) 
+    : m_id(std::move(id)), m_buf(buf) {}
 
     void consume() {
         while(true) {
-            T x = m_buf->remove();
-            std::cout << x;
+            struct msg x = m_buf.remove();
+            std::printf("- %d\n", x.x);
 
             int sleep = std::rand() % 1000 + 10;
             std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
@@ -113,20 +119,27 @@ public:
     }
 
 private:
-    Buffer<T> *m_buf;
     std::string m_id;
+    MessageQueue<struct msg> &m_buf;
 };
 
 int main(int argc, char const *argv[])
 {
     std::srand(std::time(nullptr));
 
-    Buffer<elem_t> *buffer = new Buffer<elem_t>(std::stoi(argv[1]));
-    Producer<elem_t> *p = new Producer<elem_t>("prod", buffer);
-    Consumer<elem_t> *c = new Consumer<elem_t>("cons", buffer);
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <queue_capacity>\n";
+        return -1;
+    }
 
-    std::thread pt(&Producer<elem_t>::produce, p);
-    std::thread ct(&Consumer<elem_t>::consume, c);
+    size_t queue_capacity = std::stoul(argv[1]);
+
+    MessageQueue<struct msg> buffer{queue_capacity};
+    MessageProducer prod{"producer1", buffer};
+    MessageConsumer cons{"consumer1", buffer};
+
+    std::thread pt{&MessageProducer::produce, prod};
+    std::thread ct{&MessageConsumer::consume, cons};
 
     pt.join();
     ct.join();
