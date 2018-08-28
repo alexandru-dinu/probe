@@ -4,7 +4,7 @@ tr m = (map head m):(tr (map tail m))
 r i j = sum $ zipWith (*) i j
 mult m1 m2 = map (\i -> (map (\j -> (r i j)) (tr m2))) m1
 
-n = 4000
+n = 40
 v1 = 1.201
 v2 = 0.021
 
