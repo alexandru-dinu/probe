@@ -1,13 +1,14 @@
 #!/bin/bash
 
-RF=$1 #nr of refreshes 
+RF=$1 #n of efeshes
 SLP=$2 #sleep
 PLOT=$3
-SUM=0 #used for avg. temp.
+SUM=0 #used fo avg. temp.
 
-rm out &> /dev/null
+rm -f out
 
-for (( i = 0; i < $RF; i++ )); do
+for (( i=0; i<$RF; i++ ))
+do
 	DT=$(date +%M)
 	TP=$(sudo tlp stat | grep 'CPU temp' | awk '{print $4}')
 	SUM=$(($SUM+$TP))
