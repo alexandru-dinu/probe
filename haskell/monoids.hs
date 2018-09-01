@@ -6,6 +6,8 @@ import Data.Monoid
 import qualified Data.Foldable as F
 
 -- types with an associative binary operation that has an identity
+-- A monoid is when you have an associative binary function and 
+-- a value which acts as an identity with respect to that function.
 
 -- class Monoid m where  
 --     mempty :: m  
