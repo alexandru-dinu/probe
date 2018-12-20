@@ -3,97 +3,91 @@ Very simple solver for Calculator: The Game
 https://play.google.com/store/apps/details?id=com.sm.calculateme&hl=en
 """
 
-sign = lambda x: (1, -1)[x < 0]
-strip_sign = lambda x : x[1:] if x[0] == '-' else x
-
-ss = lambda x : strip_sign(str(x))
-
-expand = lambda x : [(name, f(x)) for (name, f) in ops.iteritems()]
-
-VALUE = 0
-NAME = 1
-KIDS = 2
-PATH = 3
+import sys
 
 
-# node = [value, function_name, kids, path]
-def cons_tree(initial, target, moves):
-    root = [initial, "ROOT", [], []]
+sign        = lambda x : (1, -1)[x < 0]
+strip_sign  = lambda x : str(x)[1:] if x < 0 else str(x)
+
+
+class Ops:
+    def __init__(self, funcs):
+        self.funcs = funcs
+
+    def expand(self, x):
+        return [(name, f(x)) for (name, f) in self.funcs.items()]
+
+    def __len__(self):
+        return len(self.funcs)
+
+
+class Node:
+    def __init__(self, value, name, kids, path):
+        self.value = value
+        self.name = name
+        self.kids = kids
+        self.path = path
+
+
+def cons_tree(initial, target, moves, ops):
+    root = Node(value=initial, name="ROOT", kids=[], path=[])
 
     queue = [root]
-
     num_nodes = sum(len(ops) ** i for i in range(1, moves + 1))
 
     while queue != [] and num_nodes >= 0:
-        [nval, nname, nkids, npath] = queue.pop(0)
+        node = queue.pop(0)
 
-        for (name, val) in expand(nval):
-            kid = [val, name, [], npath + [name]]
-            queue.append(kid)
-            nkids.append(kid)
+        for (name, val) in ops.expand(node.value):
+            kid = Node(value=val, name=name, kids=[], path=node.path + [name])
+            queue += [kid]
+            node.kids += [kid]
             num_nodes -= 1
-        
+
     return root
-
-
-def print_tree(tree):
-    print_tree_ex(tree, 0)
-
-def print_tree_ex(tree, indent):
-    [val, name, kids, path] = tree
-
-    ind = "".join([' ' for i in range(indent)])
-    print ind, path, " -> ", str(val)
-
-    for k in kids:
-        print_tree_ex(k, indent + 8)
 
 
 def solve(tree, target):
     solutions = []
-    [val, fname, kids, path] = tree
 
-    if val == target:
-        return [" | ".join(path)]
+    if tree.value == target:
+        return [" | ".join(tree.path)]
 
-    for k in kids:
+    for k in tree.kids:
         s = solve(k, target)
         solutions += s if s != [] else []
 
     return solutions
 
 
-"""
-Game parameters
-"""
-initial = 9
-target = 30
-moves = 4
-ops = {
-    # "*2" : lambda x : x  * 2
-    # "^3" : lambda x : int(x ** 3)
+def print_tree(tree):
+    print_tree_ex(tree, 0)
 
-    # "0" : lambda x : int(str(x) + ('0'))
-    # "10->1" : lambda x : int(str(x).replace('10', '1'))
 
-    # "SUM" : lambda x : sign(x) * sum([int(c) for c in ss(x))]),
-    # "Rev" : lambda x : sign(x) * int(ss(x)[::-1])
+def print_tree_ex(tree, indent):
+    ind = "".join([' ' for i in range(indent)])
+    print(ind, tree.path, " -> ", str(tree.value))
 
-    # "<<" : lambda x : 0 if len(ss(x))) == 1 else int(str(x)[:-1])
-    # "S<" : lambda x : sign(x) * int(ss(x)[1:] + ss(x)[0]) 
-    # "S>" : lambda x : int(ss(x)[len(ss(x)))-1] + ss(x)[0:len(ss(x))-1])   
+    for k in tree.kids:
+        print_tree_ex(k, indent + 8)
 
-    "-5" : lambda x : x - 5,
-    "*-6" : lambda x : x * (-6),
-    "+/-" : lambda x : x * (-1),
-    "SUM" : lambda x : sign(x) * sum([int(c) for c in ss(x)])
-}
+
+def main(initial, target, moves, ops):
+    tree = cons_tree(initial, target, moves, ops)
+    # print_tree(tree)
+
+    solutions = solve(tree, target)
+
+    for i, solution in enumerate(solutions):
+        print(f"[{i}]: {solution}")
 
 
 if __name__ == '__main__':
+    lines = [l.strip() for l in open(sys.argv[1]).readlines()[1:]]
 
-    tree = cons_tree(initial, target, moves)
-    #print_tree(tree)
+    initial = int(lines[0])
+    target  = int(lines[1])
+    moves   = int(lines[2])
+    ops     = Ops(eval(" ".join([l for l in lines[3:] if len(l) > 0 and l[0] != '#'])))
 
-    for solution in solve(tree, target):
-        print solution
+    main(initial, target, moves, ops)

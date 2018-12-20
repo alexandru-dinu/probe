@@ -1,0 +1,26 @@
+# format: initial | target | moves | ops
+0
+404
+5
+{
+        # "*2" : lambda x : x  * 2
+        # "^3" : lambda x : int(x ** 3)
+
+        # "0" : lambda x : int(str(x) + ('0'))
+        # "10->1" : lambda x : int(str(x).replace('10', '1'))
+
+        # "SUM" : lambda x : sign(x) * sum([int(c) for c in ss(x))]),
+        # "Rev" : lambda x : sign(x) * int(ss(x)[::-1])
+
+        # "<<" : lambda x : 0 if len(ss(x)) == 1 else int(str(x)[:-1])
+        # "S<" : lambda x : sign(x) * int(ss(x)[1:] + ss(x)[0])
+        # "S>" : lambda x : int(ss(x)[len(ss(x))-1] + ss(x)[0:len(ss(x))-1])
+
+        # "+4" : lambda x : x + 4,
+        # "*4" : lambda x : x * 4,
+        # "/4" : lambda x : x / 4,
+
+        "+8" : lambda x : x + 8,
+        "*10" : lambda x : x * 10,
+        "/2" : lambda x : x / 2,
+}
