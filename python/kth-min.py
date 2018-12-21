@@ -53,7 +53,7 @@ def partition(arr, l, r):
 
 if __name__ == '__main__':
 
-    mean = lambda x : x[len(x)/2] if len(x)&1 else  0.5*(x[len(x)/2-1] + x[len(x)/2])
+    median = lambda x : x[len(x)/2] if len(x)&1 else  0.5*(x[len(x)/2-1] + x[len(x)/2])
 
     n = 10003
     x = random.sample(range(1, int(1e6)), n)
@@ -62,5 +62,4 @@ if __name__ == '__main__':
     #print x
     kth = find_kth(x, 0, n - 1, k)
 
-    x.sort()
-    print kth, mean(x)
+    print kth, median(sorted(x))

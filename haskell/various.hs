@@ -4,8 +4,8 @@ member :: (Set a) -> a -> Bool
 member (Set f) x = f x
 
 
-reunion :: (Set a) -> (Set a) -> (Set a)
-reunion (Set f1) (Set f2) = Set (\x -> f1 x || f2 x)
+union :: (Set a) -> (Set a) -> (Set a)
+union (Set f1) (Set f2) = Set (\x -> f1 x || f2 x)
 
 intersection :: (Set a) -> (Set a) -> (Set a)
 intersection (Set f1) (Set f2) = Set (\x -> f1 x && f2 x)
