@@ -1,4 +1,4 @@
-CPPFLAGS=-Wall -Wextra -g -std=c++11
+CPPFLAGS=-Wall -Wextra -g -std=c++17
 LIBS=-pthread
 
 .PHONY: clean
