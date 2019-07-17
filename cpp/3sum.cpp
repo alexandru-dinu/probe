@@ -1,41 +1,50 @@
-class Solution {
-public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> sols;
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-        if (nums.size() < 3)
-            return {};
+std::vector<std::vector<int>> threeSum(std::vector<int>& nums, int target = 0) {
+    std::vector<std::vector<int>> sols;
 
-        std::sort(nums.begin(), nums.end());
+    if (nums.size() < 3)
+        return {};
 
-        for (int i = 0; i <= nums.size() - 3; i++) {
-            if (i == 0 || nums[i] > nums[i - 1]) {
-                int left = i + 1;
-                int right = nums.size() - 1;
+    std::sort(nums.begin(), nums.end());
 
-                while (left < right) {
-                    int sum = nums[i] + nums[left] + nums[right];
+    for (std::size_t i = 0; i <= nums.size() - 3; i++) {
+        if (i > 0 and nums[i] <= nums[i-1])
+            continue;
 
-                    if (sum == 0) {
-                        vector<int> sol = {nums[i], nums[left], nums[right]};
-                        sols.push_back(sol);
-                    }
+        std::size_t left = i + 1, right = nums.size() - 1;
 
-                    if (nums[left] + nums[right] < -1 * nums[i]) {
-                        int left_ = left;
-                        while(nums[left_] == nums[left] && left < right)
-                            left++;
-                    }
-                    else {
-                        int right_ = right;
-                        while(nums[right_] == nums[right] && right > left)
-                            right--;
-                    }
-                }
-            }
+        while (left < right) {
+            int a = nums[i], b = nums[left], c = nums[right];
+
+            if (a + b + c == target)
+                sols.push_back({a, b, c});
+
+            // keeping a constant, we increase left (b) in order to skip duplicates
+            if (b + c < -a)
+                for (int l = left; nums[l] == nums[left] && left < right; left++);
+
+            // keeping a constant, we decrease right (b) in order to skip duplicates
+            else
+                for (int r = right; nums[r] == nums[right] && right > left; right--);
         }
-
-        return sols;
-
     }
-};
+
+    return sols;
+}
+
+int main(void)
+{
+    std::vector<int> nums = {-1, 0, 1, 2, -1, 4};
+    auto sols = threeSum(nums, 7);
+
+    for (auto& sol : sols) {
+        for (auto& x : sol)
+            std::cout << x << " ";
+        std::cout << "\n";
+    }
+
+    return 0;
+}

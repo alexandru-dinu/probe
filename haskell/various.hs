@@ -1,25 +1,27 @@
+import Data.Bool (bool)
+
+-- sets described by a predicate function
 data Set a = Set (a -> Bool)
 
-member :: (Set a) -> a -> Bool
-member (Set f) x = f x
+member :: a -> Set a -> Bool
+member x (Set f) = f x
 
-
-union :: (Set a) -> (Set a) -> (Set a)
+union :: Set a -> Set a -> Set a
 union (Set f1) (Set f2) = Set (\x -> f1 x || f2 x)
 
-intersection :: (Set a) -> (Set a) -> (Set a)
+intersection :: Set a -> Set a -> Set a
 intersection (Set f1) (Set f2) = Set (\x -> f1 x && f2 x)
 
-difference :: (Set a) -> (Set a) -> (Set a)
+difference :: Set a -> Set a -> Set a
 difference (Set f1) (Set f2) = Set (\x -> f1 x && not (f2 x))
 
 
 primes = sieve [2,3..] where sieve (h:t) = h:(filter (\x -> mod x h /= 0) (sieve t))
 
-isprime' x i = let p = primes !! i in
-                if p > x then False else 
-                    if p == x then True
-                        else isprime' x (i+1)
+isprime' x i = case compare (primes !! i) x of
+    GT -> False
+    EQ -> True
+    LT -> isprime' x (i + 1)
 
 isprime x = isprime' x 0
 
