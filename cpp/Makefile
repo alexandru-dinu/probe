@@ -7,6 +7,5 @@ LIBS=-pthread
 	g++ $(LIBS) $^ -o $@
 %.o: %.cpp
 	g++ $(CPPFLAGS) -c $^ -o $@
-
 clean:
-	rm -f *.o *.out
+	find . -exec file {} \; | grep -i elf | cut -d":" -f1 | tee /dev/tty | xargs --no-run-if-empty rm
