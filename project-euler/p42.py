@@ -11,7 +11,7 @@ def isqrt(n):
 
 	return (x * x == n)
 
-with open("words.txt") as infile:
+with open("data/words.txt") as infile:
 	count = 0
 
 	words = infile.readline().split(",")
@@ -23,4 +23,3 @@ with open("words.txt") as infile:
 			count += 1
 
 	print(count)
-
