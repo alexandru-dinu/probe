@@ -1,6 +1,8 @@
 .vscode
 .idea
 
+*.pkl
+
 # Haskell
 *.hi
 *.o
