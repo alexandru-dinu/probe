@@ -14,7 +14,7 @@ dist (x1, y1) (x2, y2) = sqrt ((x1-x2) ** 2 + (y1-y2) ** 2)
 
 area :: (Point, Point, Point) -> Double
 area (p1, p2, p3) = sqrt (s * (s - a) * (s - b) * (s - c))
-    where 
+    where
         s = 0.5 * (a + b + c)
         a = dist p1 p2
         b = dist p2 p3

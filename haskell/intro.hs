@@ -1,7 +1,7 @@
 f x y = x - y
 
 instance Show (a->b) where
-	show f = "Functie!"
+    show f = "Function!"
 
 high f = f 5
 

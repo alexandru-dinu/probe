@@ -100,18 +100,18 @@ def main():
 	lucky = 10
 	num = 5
 	chance = 50
-	
+
 	first_gen = gen_population(pop_size, len(password))
 
 	idx = 1
-	
+
 	while True:
 		ng = next_generation(first_gen, password, best, lucky, num, chance)
 		idx += 1
 		if password in ng:
 			index = ng.index(password)
 			print("FOUND @ pop {}, index {}".format(idx, index))
-			
+
 			for (i, p) in enumerate(ng):
 				print(i, "\t", p)
 

@@ -1,7 +1,7 @@
 #include <iostream>
 
 struct s {
-    
+
     int x;
 
     s() {}

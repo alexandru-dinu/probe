@@ -14,7 +14,7 @@ void thread_func()
 int main(int argc, char const *argv[])
 {
     std::srand(std::time(nullptr));
-    
+
     int N = std::stoi(argv[1]);
 
     std::vector<std::thread> thr(N);

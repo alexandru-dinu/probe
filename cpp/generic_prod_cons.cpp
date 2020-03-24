@@ -26,7 +26,7 @@ struct msg {
 
 // Queue that holds produced items
 template <typename T>
-class MessageQueue 
+class MessageQueue
 {
 public:
     MessageQueue(): m_capacity(1) {}
@@ -36,9 +36,9 @@ public:
     void add(T x) {
         std::unique_lock<std::mutex> locker{m_mtx};
         m_cond.wait(locker, [this](){return m_buffer.size() < m_capacity;});
-        
+
         m_buffer.push_front(std::move(x));
-        
+
         locker.unlock();
         m_cond.notify_one();
     }
@@ -46,14 +46,14 @@ public:
     void add_move(T&& x) {
         std::unique_lock<std::mutex> locker{m_mtx};
         m_cond.wait(locker, [this](){return m_buffer.size() < m_capacity;});
-        
+
         m_buffer.push_front(std::move(x));
-        
+
         locker.unlock();
         m_cond.notify_one();
     }
 
-    // remove an item from the end of the queue 
+    // remove an item from the end of the queue
     T remove() {
         std::unique_lock<std::mutex> locker(m_mtx);
         m_cond.wait(locker, [this](){return m_buffer.size() > 0;});
@@ -80,13 +80,13 @@ private:
 class MessageProducer
 {
 public:
-    MessageProducer(std::string&& id, MessageQueue<struct msg> &buf) 
+    MessageProducer(std::string&& id, MessageQueue<struct msg> &buf)
     : m_id(std::move(id)), m_buf(buf) {}
 
     void produce() {
         while (true) {
             struct msg x{};
-            
+
             m_buf.add(x);
             std::printf("+ %d\n", x.x);
 
@@ -105,7 +105,7 @@ private:
 class MessageConsumer
 {
 public:
-    MessageConsumer(std::string&& id, MessageQueue<struct msg> &buf) 
+    MessageConsumer(std::string&& id, MessageQueue<struct msg> &buf)
     : m_id(std::move(id)), m_buf(buf) {}
 
     void consume() {
