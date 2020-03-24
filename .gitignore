@@ -1,7 +1,9 @@
 .vscode
 .idea
-
 *.pkl
+
+# project-specific
+project-euler/data
 
 # Haskell
 *.hi
