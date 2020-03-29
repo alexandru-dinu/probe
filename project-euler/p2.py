@@ -10,4 +10,5 @@ def fib(n):
             s += nxt
     return s
 
+
 print(fib(4000000))

@@ -41,61 +41,62 @@ o = p + 2p1 + 2p2
 from sympy import sieve
 from math import sqrt, floor
 
+
 def is_prime(x):
-	(a, b) = sieve.search(x)
-	return a == b
+    (a, b) = sieve.search(x)
+    return a == b
+
 
 def largest_prime_less_than(n):
-	if n == 3:
-		return 2
+    if n == 3:
+        return 2
 
-	if is_prime(n):
-		n -= 2
+    if is_prime(n):
+        n -= 2
 
-	primes = [False] * (n+1)
-	primes[2:] = [True] * (n-1)
+    primes = [False] * (n+1)
+    primes[2:] = [True] * (n-1)
 
-	p = -1
-	for i in range(2, n+1):
-			if primes[i]:
-				p = i
-				for j in range(i+i, n+1, i):
-					primes[j] = False
-	return p
+    p = -1
+    for i in range(2, n+1):
+        if primes[i]:
+            p = i
+            for j in range(i+i, n+1, i):
+                primes[j] = False
+    return p
 
 
 def gen_plt(n):
-	p = n
-	prev = -1
-	l = []
-	while True:
-		p = largest_prime_less_than(p)
-		if p == prev:
-			break
-		l.append(p)
+    p = n
+    prev = -1
+    l = []
+    while True:
+        p = largest_prime_less_than(p)
+        if p == prev:
+            break
+        l.append(p)
 
-	return l
+    return l
 
 
 def solve():
-	o = 9
+    o = 9
 
-	while True:
-		if is_prime(o):
-			o += 2
-			continue
+    while True:
+        if is_prime(o):
+            o += 2
+            continue
 
-		plt = gen_plt(o)
-		ks = list(map(lambda p : sqrt((o-p)/2), plt))
-		ks = list(map(lambda p : floor(p) != p, ks))
+        plt = gen_plt(o)
+        ks = list(map(lambda p: sqrt((o-p)/2), plt))
+        ks = list(map(lambda p: floor(p) != p, ks))
 
-		if all(ks):
-			print("Found o = {}".format(o))
-			return o
+        if all(ks):
+            print("Found o = {}".format(o))
+            return o
 
-		o += 2
-
+        o += 2
 
 
 if __name__ == '__main__':
-	solve()
+    solve()

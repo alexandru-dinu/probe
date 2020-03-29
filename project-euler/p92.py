@@ -1,5 +1,7 @@
+import sys
 from functools import reduce
 from itertools import islice, accumulate, repeat, takewhile
+
 
 def digits(n):
     d = []
@@ -8,17 +10,22 @@ def digits(n):
         n = n // 10
     return d
 
+
 def next_from(n):
     return reduce(lambda x, y: x + y*y, digits(n), 0)
+
 
 def iterate(f, x):
     return accumulate(repeat(x), lambda fx, _: f(fx))
 
+
 def take(n, it):
     return [x for x in islice(it, n)]
 
+
 def run(n):
-    return takewhile(lambda x : x != 1 and x != 89, iterate(next_from, n))
+    return takewhile(lambda x: x != 1 and x != 89, iterate(next_from, n))
+
 
 def terminates(n, mem):
     chain = iterate(next_from, n)
@@ -39,6 +46,7 @@ def terminates(n, mem):
                 mem[p] = 89
             return 89
 
+
 def count(limit):
     mem = {}
     count = 0
@@ -47,5 +55,5 @@ def count(limit):
 
     return count
 
-import sys
+
 print(count(int(sys.argv[1])))
