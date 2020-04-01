@@ -8,7 +8,7 @@ int x = 0;
 void *func(void *arg)
 {
     pthread_mutex_lock(&mutex);
-    
+
     x = x + 1;
 
     pthread_mutex_unlock(&mutex);
@@ -25,6 +25,6 @@ int main(void)
     pthread_join(tid, NULL);
 
     printf("[%d]", x);
-    
+
     return 0;
 }

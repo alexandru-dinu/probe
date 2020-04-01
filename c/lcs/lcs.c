@@ -8,7 +8,8 @@
 
 #define max(a, b) ((a > b) ? a : b)
 
-int* longestCommonSubsequence(int a_size, int* a, int b_size, int* b, int *result_size) {
+int* longestCommonSubsequence(int a_size, int* a, int b_size, int* b, int *result_size)
+{
     // Complete this function
     int i, j, k;
 
@@ -18,10 +19,10 @@ int* longestCommonSubsequence(int a_size, int* a, int b_size, int* b, int *resul
 
     for (i = 1; i <= a_size; i++) {
         for (j = 1; j <= b_size; j++) {
-            if(a[i-1] == b[j-1])
-                m[i][j] = 1 + m[i-1][j-1];
+            if(a[i - 1] == b[j - 1])
+                m[i][j] = 1 + m[i - 1][j - 1];
             else
-                m[i][j] = max(m[i-1][j], m[i][j-1]);
+                m[i][j] = max(m[i - 1][j], m[i][j - 1]);
         }
     }
 
@@ -33,11 +34,12 @@ int* longestCommonSubsequence(int a_size, int* a, int b_size, int* b, int *resul
     k = 0;
 
     while (i >= 1 && j >= 1) {
-        if (a[i-1] == b[j-1]) {
+        if (a[i - 1] == b[j - 1]) {
             result[*result_size - 1 - k++] = a[i - 1];
-            i--; j--;
+            i--;
+            j--;
         }
-        else if (m[i-1][j] > m[i][j-1])
+        else if (m[i - 1][j] > m[i][j - 1])
             i--;
         else
             j--;
@@ -46,17 +48,18 @@ int* longestCommonSubsequence(int a_size, int* a, int b_size, int* b, int *resul
     return result;
 }
 
-int main() {
+int main()
+{
     int n;
     int m;
     scanf("%i %i", &n, &m);
     int *a = malloc(sizeof(int) * n);
     for (int a_i = 0; a_i < n; a_i++) {
-       scanf("%i",&a[a_i]);
+        scanf("%i", &a[a_i]);
     }
     int *b = malloc(sizeof(int) * m);
     for (int b_i = 0; b_i < m; b_i++) {
-       scanf("%i",&b[b_i]);
+        scanf("%i", &b[b_i]);
     }
     int result_size;
     int* result = longestCommonSubsequence(n, a, m, b, &result_size);

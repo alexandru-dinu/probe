@@ -10,25 +10,25 @@
 
 int main(int argc, char **argv)
 {
-	int i;
+    int i;
 
-	char *args[NUM_ARGS + 2];
+    char *args[NUM_ARGS + 2];
 
-	args[0] = strdup(argv[1]);
-	args[1] = strdup("\xd0\x55\x55\x56");
+    args[0] = strdup(argv[1]);
+    args[1] = strdup("\xd0\x55\x55\x56");
 
-	args[LAST_ARG] = NULL;
+    args[LAST_ARG] = NULL;
 
     /*
-	printf("calling: ");
-	for (i = 0; i < LAST_ARG; i++)
-		printf("[%s] ", args[i]);
-	printf("\n");
+    printf("calling: ");
+    for (i = 0; i < LAST_ARG; i++)
+    	printf("[%s] ", args[i]);
+    printf("\n");
     */
 
-	execv(args[0], args);
+    execv(args[0], args);
 
-	fprintf(stderr, "error\n");
+    fprintf(stderr, "error\n");
 
-	return 0;
+    return 0;
 }

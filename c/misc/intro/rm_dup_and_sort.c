@@ -7,65 +7,59 @@
 
 void shiftLeft(int *v, int n, int pos)
 {
-	int k;
+    int k;
 
-	for(k = pos; k < n; k++)
-	{
-		v[k] = v[k + 1];
-	}
+    for(k = pos; k < n; k++) {
+        v[k] = v[k + 1];
+    }
 }
 
 int elimDuplicate(int *v, int n)
 {
-	int i, j;
-	int count = 0;
+    int i, j;
+    int count = 0;
 
-	for(i = 0; i < n; i++)
-	{
-		for (j = 0; j < i; j++)
-		{
-			if(v[i] == v[j])
-			{
-				shiftLeft(v, n, i);
-				count++;
-				i--;
-				n--;
-				break;
-			}
-		}
-	}
-	return count;
+    for(i = 0; i < n; i++) {
+        for (j = 0; j < i; j++) {
+            if(v[i] == v[j]) {
+                shiftLeft(v, n, i);
+                count++;
+                i--;
+                n--;
+                break;
+            }
+        }
+    }
+    return count;
 }
 
 int compare(const void* a, const void* b)
 {
-	int *x = (int*)a;
-	int *y = (int*)b;
+    int *x = (int*)a;
+    int *y = (int*)b;
 
-	return *x - *y; 
+    return *x - *y;
 }
 
 int main(void)
 {
-	int i;
-	int v[MAX];
+    int i;
+    int v[MAX];
 
-	for(i = 0; i < MAX; i++)
-	{
-		scanf("%d", &v[i]);
-	}
+    for(i = 0; i < MAX; i++) {
+        scanf("%d", &v[i]);
+    }
 
-	int n = elimDuplicate(v, MAX);
-	int _n = MAX - n;
+    int n = elimDuplicate(v, MAX);
+    int _n = MAX - n;
 
-	qsort(v, _n, sizeof(int), compare);
+    qsort(v, _n, sizeof(int), compare);
 
-	for(i = 0; i < MAX - n ; i++)
-	{
-		printf("%d ", v[i]);
-	}
-	printf("\n");
+    for(i = 0; i < MAX - n ; i++) {
+        printf("%d ", v[i]);
+    }
+    printf("\n");
 
 
-	return 0;
+    return 0;
 }

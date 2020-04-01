@@ -8,59 +8,52 @@
 
 int** allocMat(int rows, int cols)
 {
-	int **mat;
-	int i, j;
+    int **mat;
+    int i, j;
 
-	mat = (int**) malloc(rows * sizeof(int*));
-	//!err
-	if(!mat)
-		return NULL;
-	//!--
+    mat = (int**) malloc(rows * sizeof(int*));
+    //!err
+    if(!mat)
+        return NULL;
+    //!--
 
-	for(i = 0; i < rows; i++)
-	{
-		mat[i] = (int*) malloc(cols * sizeof(int));
-		//!err
-		if(!mat[i])
-		{
-			for(j = 0; j < i; j++)
-			{
-				free(mat[j]);
-				mat[j] = NULL;
-			}
-			free(mat);
-			return NULL;
-		}
-		//!--
-	}
-	return mat;
+    for(i = 0; i < rows; i++) {
+        mat[i] = (int*) malloc(cols * sizeof(int));
+        //!err
+        if(!mat[i]) {
+            for(j = 0; j < i; j++) {
+                free(mat[j]);
+                mat[j] = NULL;
+            }
+            free(mat);
+            return NULL;
+        }
+        //!--
+    }
+    return mat;
 }
 
 int main(void)
 {
-	int **mat;
-	int i, j;
+    int **mat;
+    int i, j;
 
-	mat = allocMat(ROWS, COLS);
+    mat = allocMat(ROWS, COLS);
 
-	//read
-	for(i = 0; i < ROWS; i++)
-	{
-		for(j = 0; j < COLS; j++)
-		{
-			scanf("%d", &mat[i][j]);
-		}
-	}
+    //read
+    for(i = 0; i < ROWS; i++) {
+        for(j = 0; j < COLS; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
 
-	//write
-	for(i = 0; i < ROWS; i++)
-	{
-		for(j = 0; j < COLS; j++)
-		{
-			printf("%d ", mat[i][j]);
-		}
-		printf("\n");
-	}
+    //write
+    for(i = 0; i < ROWS; i++) {
+        for(j = 0; j < COLS; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
 
-	return 0;
+    return 0;
 }

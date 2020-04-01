@@ -27,206 +27,207 @@ void enter_room(void);
 
 void dbg_student(const char* message)
 {
-	printf("Student %ld %s - dir=%d sap=%d\n",
-			TID, message,
-			dean_in_room, students_at_party);
+    printf("Student %ld %s - dir=%d sap=%d\n",
+           TID, message,
+           dean_in_room, students_at_party);
 }
 
 void dbg_dean(const char* message)
 {
-	printf(">> Dean %s - dir=%d sap=%d\n", message,
-			dean_in_room, students_at_party);
+    printf(">> Dean %s - dir=%d sap=%d\n", message,
+           dean_in_room, students_at_party);
 }
 
 void *stud_func(void *arg)
 {
-	enter_room();
-	pthread_exit(NULL);
+    enter_room();
+    pthread_exit(NULL);
 }
 
 void *dean_func(void *arg)
 {
-	break_party();
-	pthread_exit(NULL);
+    break_party();
+    pthread_exit(NULL);
 }
 
 void start_student(int idx)
 {
-	int rc;
+    int rc;
 
-	rc = pthread_create(&thr_stud[idx], NULL, stud_func, NULL);
-	
-	if (rc != 0)
-		exit(1);
+    rc = pthread_create(&thr_stud[idx], NULL, stud_func, NULL);
+
+    if (rc != 0)
+        exit(1);
 }
 
 
 void start_dean(void)
 {
-	int rc;
+    int rc;
 
-	rc = pthread_create(&thr_dean, NULL, dean_func, NULL);
+    rc = pthread_create(&thr_dean, NULL, dean_func, NULL);
 
-	if (rc != 0)
-		exit(1);
+    if (rc != 0)
+        exit(1);
 }
 
 /*  code executed by student thread whe */
 void party(void)
 {
-	while (1) {
-		/* TODO - continue to party while the dean
-		 * is _not_ in the room
-		 */
+    while (1) {
+        /* TODO - continue to party while the dean
+         * is _not_ in the room
+         */
 
-		pthread_mutex_lock(&stud_mutex);
+        pthread_mutex_lock(&stud_mutex);
 
-		//dbg_student("partying...");
+        //dbg_student("partying...");
 
-		if (dean_in_room == 1) {
-			dbg_student("will stop partying");
-			
-			students_at_party--;
+        if (dean_in_room == 1) {
+            dbg_student("will stop partying");
 
-			pthread_mutex_unlock(&stud_mutex);
+            students_at_party--;
 
-			return;
-		}
+            pthread_mutex_unlock(&stud_mutex);
 
-		pthread_mutex_unlock(&stud_mutex);
-	}
+            return;
+        }
+
+        pthread_mutex_unlock(&stud_mutex);
+    }
 }
 
 void enter_room(void)
 {
-	/* TODO - this code is executed by the students at first
-	 * 1. if the dean is not in the room -> party (call party()
-	 * function :P )
-	 * 2. if the dean is in the room, silently run away
-	 */
+    /* TODO - this code is executed by the students at first
+     * 1. if the dean is not in the room -> party (call party()
+     * function :P )
+     * 2. if the dean is in the room, silently run away
+     */
 
-	pthread_mutex_lock(&stud_mutex);
+    pthread_mutex_lock(&stud_mutex);
 
-	dbg_student("trying to...");
+    dbg_student("trying to...");
 
-	if (dean_in_room == 0) {
+    if (dean_in_room == 0) {
 
-		dbg_student("no dean => party");
+        dbg_student("no dean => party");
 
-		students_at_party++;
+        students_at_party++;
 
-		pthread_mutex_unlock(&stud_mutex);
+        pthread_mutex_unlock(&stud_mutex);
 
-		party();
-	} else {
+        party();
+    }
+    else {
 
-		dbg_student("silently run away");
+        dbg_student("silently run away");
 
-		pthread_mutex_unlock(&stud_mutex);
-	}
+        pthread_mutex_unlock(&stud_mutex);
+    }
 
 }
 
 void break_party(void)
 {
-	/* this code is executed by the dean */
+    /* this code is executed by the dean */
 
-	while (1) {
+    while (1) {
 
-		/* TODO - wait for
-		 * 1. the party to get wild
-		 * or
-		 * 2. no students are in the room
-		 */
+        /* TODO - wait for
+         * 1. the party to get wild
+         * or
+         * 2. no students are in the room
+         */
 
-		sleep(1);
+        sleep(1);
 
-		pthread_mutex_lock(&dean_mutex);
+        pthread_mutex_lock(&dean_mutex);
 
-		dbg_dean("wild_party || no students_at_party");
+        dbg_dean("wild_party || no students_at_party");
 
-		dbg_dean("in mutex 1");
-
-
-		if (students_at_party >= wild_party_count || students_at_party == 0) {
-
-			dean_in_room = 1;
-			dbg_dean("entered the room");
-
-			pthread_mutex_unlock(&dean_mutex);
-
-			break;
-		}
-
-		pthread_mutex_unlock(&dean_mutex);
-	}
+        dbg_dean("in mutex 1");
 
 
-	while (1) {
-		/* TODO - wait for everyone to leave the party */
+        if (students_at_party >= wild_party_count || students_at_party == 0) {
 
-		sleep(1);
+            dean_in_room = 1;
+            dbg_dean("entered the room");
 
-		dbg_dean("wait for everyone to leave the party");
+            pthread_mutex_unlock(&dean_mutex);
 
-		pthread_mutex_lock(&dean_mutex);
+            break;
+        }
 
-		dbg_dean("in mutex 2");
+        pthread_mutex_unlock(&dean_mutex);
+    }
 
-		if (students_at_party == 0) {
 
-			dbg_dean("everyone left the party, exiting...");
+    while (1) {
+        /* TODO - wait for everyone to leave the party */
 
-			dean_in_room = 0;
-			
-			pthread_mutex_unlock(&dean_mutex);
+        sleep(1);
 
-			return;
+        dbg_dean("wait for everyone to leave the party");
 
-		}		
+        pthread_mutex_lock(&dean_mutex);
 
-		pthread_mutex_unlock(&dean_mutex);
-	}
+        dbg_dean("in mutex 2");
+
+        if (students_at_party == 0) {
+
+            dbg_dean("everyone left the party, exiting...");
+
+            dean_in_room = 0;
+
+            pthread_mutex_unlock(&dean_mutex);
+
+            return;
+
+        }
+
+        pthread_mutex_unlock(&dean_mutex);
+    }
 }
 
 void wait_all(void)
 {
-	int i;
-	for (i = 0; i < num_students; i++)
-		pthread_join(thr_stud[i], NULL);
+    int i;
+    for (i = 0; i < num_students; i++)
+        pthread_join(thr_stud[i], NULL);
 
-	pthread_join(thr_dean, NULL);
+    pthread_join(thr_dean, NULL);
 }
 
 
 int main(int argc, char const *argv[])
 {
-	srand(time(NULL));
+    srand(time(NULL));
 
-	test1();
-	test2();
+    test1();
+    test2();
 
-	return 0;
+    return 0;
 }
 
 
 
 void test1(void)
 {
-	printf("=== TEST 1 === \n");
+    printf("=== TEST 1 === \n");
 
-	int i;
+    int i;
 
-	start_dean();
+    start_dean();
 
-	sleep(1);
+    sleep(1);
 
-	for (i = 0; i < num_students; i++)
-		start_student(i);
+    for (i = 0; i < num_students; i++)
+        start_student(i);
 
-	wait_all();
+    wait_all();
 
-	printf("=== TEST 1 DONE === \n");
+    printf("=== TEST 1 DONE === \n");
 }
 
 
@@ -234,23 +235,23 @@ void test1(void)
 
 void test2(void)
 {
-	printf("=== TEST 2 === \n");
+    printf("=== TEST 2 === \n");
 
-	int i;
+    int i;
 
-	for (i = 0; i < num_students; i++) {
-		start_student(i);
+    for (i = 0; i < num_students; i++) {
+        start_student(i);
 
-		if((rand() % (num_students - i)) < 5) {
-			start_dean();
-			break;
-		}
-	}
+        if((rand() % (num_students - i)) < 5) {
+            start_dean();
+            break;
+        }
+    }
 
-	for(; i < num_students; i++)
-		start_student(i);
+    for(; i < num_students; i++)
+        start_student(i);
 
-	wait_all();
+    wait_all();
 
-	printf("=== TEST 2 DONE === \n");
+    printf("=== TEST 2 DONE === \n");
 }

@@ -8,7 +8,8 @@
 #include <fcntl.h>
 
 
-int main(void) {
+int main(void)
+{
 
     pid_t kid;
 
@@ -29,19 +30,19 @@ int main(void) {
 
     //ret_code = dup2(fd,1);
     //ret_code = dup2(fd,2);
-    
+
     //fprintf(stderr, "err\n");
     //fprintf(stdout, "out\n");
 
 
-   // const char *argv[] = {"qq", NULL};
+    // const char *argv[] = {"qq", NULL};
 
     /*
     kid = fork();
 
 
     if(kid == 0) {
-       
+
         execvp(argv[0], (char*const*)argv);
 
         fprintf(stderr, "exec error");

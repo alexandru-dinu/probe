@@ -12,126 +12,128 @@
 
 ptr_clist_t clist_init()
 {
-	ptr_clist_t cl = calloc(1, sizeof(clist_t));
+    ptr_clist_t cl = calloc(1, sizeof(clist_t));
 
-	cl->cursor = NULL;
-	cl->head = NULL;
-	cl->tail = NULL;
+    cl->cursor = NULL;
+    cl->head = NULL;
+    cl->tail = NULL;
 
-	return cl;
+    return cl;
 }
 
 /* add a new cell with ref to data  */
 ptr_cell_t new_cell(void *data)
 {
-	ptr_cell_t aux;
+    ptr_cell_t aux;
 
-	aux = calloc(1, sizeof(cell_t));
-	DIE(aux == NULL, "calloc");
+    aux = calloc(1, sizeof(cell_t));
+    DIE(aux == NULL, "calloc");
 
-	aux->data = data;
-	aux->next = NULL;
+    aux->data = data;
+    aux->next = NULL;
 
-	return aux;
+    return aux;
 }
 
 
 void clist_push_back(void *data, ptr_clist_t cl)
 {
-	ptr_cell_t aux = new_cell(data);
+    ptr_cell_t aux = new_cell(data);
 
-	if (cl->cursor == NULL) {
-		cl->cursor = aux;
-		cl->head = aux;
-		cl->tail = aux;
-	} else {
-		cl->tail->next = aux;
-		cl->tail = aux;
-	}
+    if (cl->cursor == NULL) {
+        cl->cursor = aux;
+        cl->head = aux;
+        cl->tail = aux;
+    }
+    else {
+        cl->tail->next = aux;
+        cl->tail = aux;
+    }
 
 }
 
 void clist_advance_cursor(ptr_clist_t cl)
 {
-	cl->cursor = cl->cursor->next;
+    cl->cursor = cl->cursor->next;
 
-	if (cl->cursor == NULL)
-		cl->cursor = cl->head;
+    if (cl->cursor == NULL)
+        cl->cursor = cl->head;
 }
 
 void clist_move_to_back(ptr_cell_t c, ptr_clist_t cl)
 {
-	ptr_cell_t aux, before;
+    ptr_cell_t aux, before;
 
-	if (c == cl->tail)
-		return;
+    if (c == cl->tail)
+        return;
 
-	before = NULL;
-	aux = cl->head;
+    before = NULL;
+    aux = cl->head;
 
-	while (aux != c) {
-		before = aux;
-		aux = aux->next;
-	}
+    while (aux != c) {
+        before = aux;
+        aux = aux->next;
+    }
 
-	if (before == NULL) {
-		aux = cl->head;
-		cl->head = cl->head->next;
+    if (before == NULL) {
+        aux = cl->head;
+        cl->head = cl->head->next;
 
 
-	} else {
-		before->next = c->next;
-	}
+    }
+    else {
+        before->next = c->next;
+    }
 
-	cl->tail->next = c;
-	cl->tail = c;
-	cl->tail->next = NULL;
+    cl->tail->next = c;
+    cl->tail = c;
+    cl->tail->next = NULL;
 }
 
 ptr_cell_t clist_find(void *data, size_t sz, ptr_clist_t cl)
 {
-	ptr_cell_t aux;
+    ptr_cell_t aux;
 
-	for (aux = cl->head; aux != NULL; aux = aux->next) {
-		if (memcmp(aux->data, data, sz) == 0)
-			return aux;
-	}
+    for (aux = cl->head; aux != NULL; aux = aux->next) {
+        if (memcmp(aux->data, data, sz) == 0)
+            return aux;
+    }
 
-	return NULL;
+    return NULL;
 }
 
 
 void clist_destroy(ptr_clist_t *cl)
 {
-	ptr_cell_t cursor, aux;
+    ptr_cell_t cursor, aux;
 
-	if (*cl == NULL)
-		return;
+    if (*cl == NULL)
+        return;
 
-	cursor = (*cl)->head;
+    cursor = (*cl)->head;
 
-	while(cursor != NULL) {
-		aux = cursor;
-		cursor = cursor->next;
+    while(cursor != NULL) {
+        aux = cursor;
+        cursor = cursor->next;
 
-		free(aux->data);
-		aux->data = NULL;
+        free(aux->data);
+        aux->data = NULL;
 
-		free(aux);
-		aux = NULL;
-	}
+        free(aux);
+        aux = NULL;
+    }
 
-	free(*cl);
-	*cl = NULL;
+    free(*cl);
+    *cl = NULL;
 }
 
 int clist_is_empty(ptr_clist_t cl)
 {
-	int x = 1;
+    int x = 1;
 
-	x &= (cl->cursor == NULL);
-	x &= (cl->head == NULL);
-	x &= (cl->tail == NULL);
+    x &= (cl->cursor == NULL);
+    x &= (cl->head == NULL);
+    x &= (cl->tail == NULL);
 
-	return x;
+    return x;
 }

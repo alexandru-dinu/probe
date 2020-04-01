@@ -1,6 +1,7 @@
 #include <stdlib.h>
 
-int main() {
+int main()
+{
 
 
     system("/bin/cat ./flag.txt");

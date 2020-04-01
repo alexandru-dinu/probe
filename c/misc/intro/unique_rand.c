@@ -7,34 +7,32 @@
 
 int main(void)
 {
-	srand(time(NULL));
+    srand(time(NULL));
 
-	int *v;
-	int i, j = 0;
-	int r;
+    int *v;
+    int i, j = 0;
+    int r;
 
-	v = malloc(n * sizeof(int));
+    v = malloc(n * sizeof(int));
 
-	v[0] = rand() % MOD;
+    v[0] = rand() % MOD;
 
-	for(i = 1; i < n; i++)
-	{
-		init: r = rand() % MOD;
+    for(i = 1; i < n; i++) {
+init:
+        r = rand() % MOD;
 
-		for(j = 0; j < i; j++)
-		{
-			if(v[j] == r)
-				goto init;
-		}
+        for(j = 0; j < i; j++) {
+            if(v[j] == r)
+                goto init;
+        }
 
-		v[i] = r;
-	}
+        v[i] = r;
+    }
 
-	for (i = 0; i < n; i++)
-	{
-		printf("%d\n", v[i]);
-	}
-	printf("\n");
+    for (i = 0; i < n; i++) {
+        printf("%d\n", v[i]);
+    }
+    printf("\n");
 
-	return 0;
+    return 0;
 }

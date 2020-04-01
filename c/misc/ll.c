@@ -19,7 +19,7 @@ int main(void)
 
     int *x = malloc(4);
     *x = 1;
-    
+
     int *y = malloc(4);
     *y = 2;
 

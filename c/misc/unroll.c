@@ -2,7 +2,8 @@
 
 #define N 1000
 
-int main() {
+int main()
+{
     int i, j, k, count = 0;
 
     for (i = 0; i < N; i++)

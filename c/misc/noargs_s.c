@@ -8,7 +8,7 @@ void func()
     printf("gotcha!\n");
 }
 
-int main() 
+int main()
 {
     char *first_env = *environ;
 
@@ -17,6 +17,6 @@ int main()
     unsigned long addr = *(unsigned long *) pc;
 
     ((void (*)(void))(addr))();
-    
+
     return 0;
 }

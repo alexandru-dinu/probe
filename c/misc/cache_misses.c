@@ -3,10 +3,11 @@
 
 #define N 100
 
-int main(void) {
+int main(void)
+{
 
     int i, j;
-    
+
     int **a = calloc(N, sizeof(int*));
     int **b = calloc(N, sizeof(int*));
 
@@ -31,7 +32,7 @@ int main(void) {
     }
 
 
-    
+
 
     return 0;
 }

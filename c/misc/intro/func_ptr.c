@@ -1,23 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int foo(int a) {
-    return a+1;
+int foo(int a)
+{
+    return a + 1;
 }
 
-int goo(int a, int b) {
+int goo(int a, int b)
+{
     return a + b;
 }
 
-int hoo(int* a, int* b, int c, int d) {
+int hoo(int* a, int* b, int c, int d)
+{
     return a[c] + b[d];
 }
 
-int *qoo(int *a, int b) {
+int *qoo(int *a, int b)
+{
     return a + b;
 }
 
-int main(void) {
+int main(void)
+{
     int (*f)(int);
     int (*g)(int, int);
     int (*h)(int*, int*, int, int);
@@ -29,7 +34,7 @@ int main(void) {
 
     int *v1 = calloc(10, sizeof(int));
     v1[0] = 1337;
-    
+
     int *v2 = calloc(20, sizeof(int));
     v2[1] = 779;
 

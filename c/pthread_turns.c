@@ -29,48 +29,48 @@ int turn = 0;
 
 int main(int argc, char const *argv[])
 {
-	// i is long so that sizeof(i) == sizeof(void*) = 8 (x64)
-	long i;
-	int j;
+    // i is long so that sizeof(i) == sizeof(void*) = 8 (x64)
+    long i;
+    int j;
 
-	pthread_t threads[NUM_THREADS];
+    pthread_t threads[NUM_THREADS];
 
-	for (j = 0; j < NUM_ITERATIONS; j++) {
-		for (i = 0; i < NUM_THREADS; i++)
-			/* create threads and set as arguments the index (thread id) */
-			pthread_create(&threads[i], NULL, thread_print, (void*)i);
+    for (j = 0; j < NUM_ITERATIONS; j++) {
+        for (i = 0; i < NUM_THREADS; i++)
+            /* create threads and set as arguments the index (thread id) */
+            pthread_create(&threads[i], NULL, thread_print, (void*)i);
 
-		for (i = 0; i < NUM_THREADS; i++)
-			pthread_join(threads[i], NULL);
+        for (i = 0; i < NUM_THREADS; i++)
+            pthread_join(threads[i], NULL);
 
-		printf("\n");
-	}
-	
-	return 0;
+        printf("\n");
+    }
+
+    return 0;
 }
 
 
 void *thread_print(void* arg)
 {
-	int i;
-	long tid = (long)(arg);
+    int i;
+    long tid = (long)(arg);
 
-	pthread_mutex_lock(&mutex);
+    pthread_mutex_lock(&mutex);
 
-	/* wait if it's not my turn */
-	if (turn % NUM_THREADS != tid)
-		pthread_cond_wait(&cond, &mutex);
+    /* wait if it's not my turn */
+    if (turn % NUM_THREADS != tid)
+        pthread_cond_wait(&cond, &mutex);
 
-	/* do stuff */
-	printf("%c", LETTERS[turn]);
+    /* do stuff */
+    printf("%c", LETTERS[turn]);
 
-	/* set the turn for the next thread */
-	turn = (turn + 1) % NUM_THREADS;
+    /* set the turn for the next thread */
+    turn = (turn + 1) % NUM_THREADS;
 
-	/* signal the other thread that it's his turn */
-	pthread_cond_signal(&cond);
+    /* signal the other thread that it's his turn */
+    pthread_cond_signal(&cond);
 
-	pthread_mutex_unlock(&mutex);
+    pthread_mutex_unlock(&mutex);
 
-	pthread_exit(NULL);
+    pthread_exit(NULL);
 }
