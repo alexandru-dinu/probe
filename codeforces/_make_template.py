@@ -24,7 +24,8 @@ int main() {
 }
 """.strip()
 
-last = sorted([int(x.split('_')[0]) for x in glob.glob('*.cpp')])[-1]
+last = sorted([int(x.split('_')[0]) for x in glob.glob('*.cpp')])
+last = last[-1] if len(last) > 0 else 0
 name = '_'.join(map(lambda x: x.lower(), sys.argv[1:]))
 
 out_name = f'{last+1}_{name}.cpp'
