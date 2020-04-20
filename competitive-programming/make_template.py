@@ -24,12 +24,9 @@ int main() {
 }
 """.strip()
 
-last = sorted([int(x.split('_')[0]) for x in glob.glob('*.cpp')])
-last = last[-1] if len(last) > 0 else 0
-name = '_'.join(map(lambda x: x.lower(), sys.argv[1:]))
+directory = sys.argv[1]
+name = os.path.join(directory, '_'.join(map(lambda x: x.lower(), sys.argv[2:])) + ".cpp")
+assert not os.path.exists(name)
 
-out_name = f'{last+1}_{name}.cpp'
-assert not os.path.exists(out_name)
-
-with open(out_name, 'wt') as fp:
+with open(name, 'wt') as fp:
     fp.write(code)
