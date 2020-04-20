@@ -1,7 +1,11 @@
+import sys
+from tqdm import tqdm
+from operator import itemgetter
+from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
-import sys
-from operator import itemgetter
+import seaborn as sns
+sns.set()
 
 rules = {
     # ladders
@@ -25,8 +29,8 @@ rules = {
     39 : 15
 }
 
-count = int(sys.argv[1])
-history = {i : 0 for i in range(1, 106)}
+num_trials = int(sys.argv[1])
+count = Counter()
 avgpath = 0
 
 def play_game():
@@ -34,32 +38,26 @@ def play_game():
     l = 0
 
     while pos < 100:
-        dice = np.random.randint(1, 7)
-
-        pos += dice
-
-        history[pos] += 1
-
-        if pos in rules:
-            pos = rules[pos]
+        pos += np.random.randint(1, 7)
+        pos = rules.get(pos, pos)
+        count[pos] += 1
 
         l += 1
 
     return l
 
 
-pl = []
-for _ in range(count):
-    pl.append(play_game())
+path_lens = []
+for _ in tqdm(range(num_trials)):
+    path_lens.append(play_game())
 
-print("avg path len = {}".format(sum(pl) / count))
-print("max path len = {}".format(max(pl)))
-print("min path len = {}".format(min(pl)))
-print("most common sq = {}".format(max(history.items(), key=itemgetter(1))[0]))
+print("avg path len = {}".format(sum(path_lens) / num_trials))
+print("max path len = {}".format(max(path_lens)))
+print("min path len = {}".format(min(path_lens)))
+print("most common sq = {}".format(max(count.items(), key=itemgetter(1))[0]))
 
-cells = list(history.keys())
-passes = list(history.values())
+cells, passes = zip(*count.items())
 
-plt.stem(cells, passes)
-plt.grid()
+plt.stem(cells, passes, use_line_collection=True)
+plt.xticks(np.arange(0, max(cells)+1, 2))
 plt.show()
