@@ -2,115 +2,101 @@
 #include <stdlib.h>
 #include <limits.h>
 
-typedef struct list {
-	int element;
-	struct list* next;
-}Cell, *List;
+typedef struct list_t {
+	int val;
+	struct list_t* next;
+} cell_t, *list_t;
 
-// constructs a new cell
-List new(int element) {
-	List aux = calloc(1, sizeof(Cell));
-	aux->element = element;
+
+list_t new(int val) {
+	list_t aux = calloc(1, sizeof(cell_t));
+	aux->val = val;
 	aux->next = NULL;
-
 	return aux;
 }
 
-// inserts the element e at the beginning of L
-List cons(int e, List L) {
-	List cell = new(e);
-	cell->next = L;
-
-	return L = cell;
+list_t cons(int e, list_t xs) {
+	list_t cell = new(e);
+	cell->next = xs;
+	return xs = cell;
 }
 
-// returns an empty list
-List empty() {
+list_t empty() {
 	return NULL;
 }
 
-// returns the first element of the list
-int head(List L) {
-	return L->element;
+int head(list_t xs) {
+	return xs->val;
 }
 
-// returns the list without its first element
-List tail(List L) {
-	return L->next;
+list_t tail(list_t xs) {
+	return xs->next;
 }
 
-// returns the size of the list
-int size(List L) {
-	return (L == NULL) ? (0) : (1 + size(tail(L)));
+int size(list_t xs) {
+	return (xs == NULL) ? 0 : (1 + size(tail(xs)));
 }
 
-// checks whether the element e exists in the list
-int contains(List L, int e) {
-	if(L == empty())
+int contains(list_t xs, int e) {
+	if (xs == empty())
 		return 0;
-	else return (head(L) == e) | contains(tail(L), e); 
-}
 
-// gets the i-th element of the list
-int get(List L, int i) {
-	if(i == 0)
-		return head(L);
-	else if(i > 0 && i < size(L))
-		return get(tail(L), i - 1);
-	else return INT_MIN;
-}
-
-// returns the position of the element e in the list
-int pos(List L, int e) {
-	return (contains(L, e)) ? (1 + pos(tail(L), e)) : (-1);
-}
-
-// inserts the element e on the position i
-List ins(List L, int e, int i) {
-	if(i == 0)
-		return cons(e, L);
-	else if(i > 0 && i <= size(L))
-		return cons(head(L), ins(tail(L), e, i - 1));
-	else return L;
-}
-
-// appends L2 to L1
-List append(List L1, List L2) {
-	return (L1 == empty()) ? (L2) : (cons(head(L1), append(tail(L1), L2)));
-}
-
-// reverses the list
-List reverse(List L) {
-	if(L == empty()) 
-		return empty();
-	else return append(reverse(tail(L)), cons(head(L), empty()));
-}
-
-// trims the first i elements from the list
-List trim(List L, int i) {
-	if(i > 0 && i <= size(L))
-		return trim(tail(L), i - 1);
-	else return L;
-}
-
-// drops the last i elements from the list
-List drop(List L, int i) {
-	return reverse(trim(reverse(L), i));
-}
-
-// checks whether the lists are identical
-int eq(List L1, List L2) {
-	if(L1 == empty() && L2 == empty())
+	if (head(xs) == e)
 		return 1;
-	else return (head(L1) == head(L2)) & eq(tail(L1), tail(L2));
+
+	return contains(tail(xs), e);
 }
 
-//	prints the list
-void print(List L) {
-	if(L == empty())
-		printf("(empty)\n");
+int get(list_t xs, int i) {
+	return (i == 0) ? head(xs) : get(tail(xs), i-1);
+}
+
+int pos(list_t xs, int e) {
+	return contains(xs, e) ? (1 + pos(tail(xs), e)) : (-1);
+}
+
+list_t ins(list_t xs, int e, int i) {
+	return (i == 0) ? cons(e, xs) : cons(head(xs), ins(tail(xs), e, i - 1));
+}
+
+list_t append(list_t xs, list_t ys) {
+	return (xs == empty()) ? ys : (cons(head(xs), append(tail(xs), ys)));
+}
+
+list_t reverse(list_t xs) {
+	if (xs == empty())
+		return empty();
+
+	return append(reverse(tail(xs)), cons(head(xs), empty()));
+}
+
+list_t trim(list_t xs, int i) {
+	if (xs == empty())
+		return empty();
+
+	return (i == 0) ? xs : trim(tail(xs), i - 1);
+}
+
+list_t drop(list_t xs, int i) {
+	return reverse(trim(reverse(xs), i));
+}
+
+int eq(list_t xs, list_t ys) {
+	if (xs == empty() && ys == empty())
+		return 1;
+
+	if ((xs == empty()) != (ys == empty()) || head(xs) != head(ys))
+		return 0;
+
+	return eq(tail(xs), tail(ys));
+}
+
+void show(list_t xs) {
+	if(xs == empty()) {
+		printf("()\n");
+	}
 	else {
-		for(; L; printf("%d ", head(L)), L = tail(L));
-		printf("\n");
+		printf("%d -> ", head(xs));
+		show(tail(xs));
 	}
 }
