@@ -4,8 +4,8 @@ tru = \x -> \y -> x
 fls = \x -> \y -> y
 
 eval = \p -> p T F
-enc True    = tru
-enc False   = fls
+enc True  = tru
+enc False = fls
 
 gt x y  = enc $ (>) x y
 lte x y = no $ gt x y

@@ -1,13 +1,17 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE ScopedTypeVariables #-}
-
-
 ins :: (Num a) => Integer -> a -> [a] -> [a]
 ins 0 e xs = e:xs
-ins p e [] = 0:(ins (p - 1) e [])
-ins p e (x:xs) = x:(ins (p - 1) e xs)
+ins p e [] = 0 : ins (p - 1) e []
+ins p e (x:xs) = x : ins (p - 1) e xs
+
+
+compress :: (Eq a) => [a] -> [(a, Int)]
+compress [] = []
+compress (x:xs) = let count = length (filter (== x) (x:xs)) in
+	(x, count) : compress (filter (/= x) (x:xs))
+
+
+primes :: [Integer]
+primes = sieve [2,3..] where sieve (h:t) = h : sieve (filter (\x -> x`mod`h /= 0) t)
 
 
 primeFactors :: Integer -> [Integer]
@@ -15,7 +19,7 @@ primeFactors n = paux n 2 where
 		paux 0 _ = []
 		paux 1 _ = []
 		paux n d
-			| (mod n d == 0) = d:(paux (div n d) d)
+			| mod n d == 0 = d : paux (div n d) d
 			| otherwise		 = paux n (d + 1)
 
 
@@ -23,68 +27,29 @@ isPrime :: Integer -> Bool
 isPrime n = length (primeFactors n) == 1
 
 
-compress :: (Eq a) => [a] -> [(a, Int)]
-compress [] = []
-compress (x:xs) = let count = length (filter (== x) (x:xs)) in
-	(x, count):(compress (filter (/= x) (x:xs)))
+isPrime2 :: Integer -> Bool
+isPrime2 x = isPrime' x 0
+	where
+		isPrime' :: Integer -> Int -> Bool
+		isPrime' x i = case compare (primes !! i) x of
+			GT -> False
+			EQ -> True
+			LT -> isPrime' x (i + 1)
 
 
-empty :: (Eq a) => [a] -> Bool
-empty xs = xs == []
+lucas :: [Integer]
+lucas = map lucas' [1..]
+	where
+		lucas' :: Integer -> Integer
+		lucas' 1 = 1
+		lucas' 2 = 3
+		lucas' n = f 1 3 (n-2)
+			where f a b n = if n == 0 then b  else f b (a+b) (n-1)
 
 
-primes :: [Integer]
-primes = sieve [2,3..] where sieve (h:t) = h:(sieve (filter (\x -> x`mod`h /= 0) t))
+isPrime3 :: Integer -> Bool
+isPrime3 x = mod p x == 0 where p = last (take (fromIntegral x) lucas) - 1
 
 
 goldbach :: Integer -> [(Integer, Integer)]
 goldbach x = take 1 [(a, x - a) | a <- primes, isPrime (x - a)]
-
--- if only it'd be this easy..
-proveGoldbach :: Bool
-proveGoldbach = not $ empty [pair == [] | pair <- map goldbach [4,5..]]
-
-
-flatten :: [[a]] -> [a]
-flatten [] = []
-flatten (l:ls) = l ++ flatten ls
-
-
-data MBool = MTrue | MFalse
-
-class Bop a where
-	-- minimal sufficient implementation
-	not' :: a -> a
-	equ' :: a -> a -> a
-	and' :: a -> a -> a
-
-	or'  :: a -> a -> a
-	or' = (\x y -> not' $ (and' (not' x) (not' y)))
-
-	nand' :: a -> a -> a
-	nand' = (\x y -> not' $ (and' x y))
-
-	nor' :: a -> a -> a
-	nor' = (\x y -> not' $ (or' x y))
-
-	xor' :: a -> a -> a
-	xor' = (\x y -> or' (and' (not' x) y) (and' x (not' y)))
-
-
-instance Bop MBool where
-	not' MTrue = MFalse
-	not' MFalse = MTrue
-
-	equ' MTrue MTrue = MTrue
-	equ' MFalse MFalse = MTrue
-	equ' _ _ = MFalse
-
-	and' MTrue MTrue = MTrue
-	and' _ _ = MFalse
-
-instance Show MBool where
-	show MTrue = "True"
-	show MFalse = "False"
-
-
-table = \f -> [[p, q, f p q] | p <- [MTrue, MFalse], q <- [MTrue, MFalse]]

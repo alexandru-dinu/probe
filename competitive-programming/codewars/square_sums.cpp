@@ -5,6 +5,11 @@
 #include <math.h>
 #include <functional>
 
+/*
+ * given an integer number N in [2, 1000], return an array of integers 1..N
+ * arranged in a way, so that the sum of each 2 consecutive numbers is a square
+ */
+
 using num_t     = int;
 using set_t     = std::set<num_t>;
 using graph_t   = std::unordered_map<num_t, set_t>;

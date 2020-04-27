@@ -6,14 +6,14 @@ import Data.Monoid
 import qualified Data.Foldable as F
 
 -- types with an associative binary operation that has an identity
--- A monoid is when you have an associative binary function and 
+-- A monoid is when you have an associative binary function and
 -- a value which acts as an identity with respect to that function.
 
--- class Monoid m where  
---     mempty :: m  
---     mappend :: m -> m -> m     
---     mconcat :: [m] -> m  
---     mconcat = foldr mappend mempty 
+-- class Monoid m where
+--     mempty :: m
+--     mappend :: m -> m -> m
+--     mconcat :: [m] -> m
+--     mconcat = foldr mappend mempty
 -- (<>): infix synonym for mappend
 
 -- instance Monoid Ordering where
@@ -64,7 +64,7 @@ compareStrings s1 s2 = (length s1 `compare` length s2) <>
 
 -- what if the type of the contents of the Maybe aren't an instance of Monoid?
 -- First is useful when we have a bunch of Maybe values and we just want to know if any of them is a Just
--- newtype First a = First { getFirst :: Maybe a } 
+-- newtype First a = First { getFirst :: Maybe a }
 --     deriving (Eq, Ord, Read, Show)
 
 -- instance Monoid (First a) where
@@ -87,21 +87,21 @@ e2 = getLast . mconcat . map Last $ [Nothing, Just 10, Nothing, Just 11, Nothing
 
 
 
--- One of the more interesting ways to put monoids to work 
+-- One of the more interesting ways to put monoids to work
 -- is to make them help us define folds over various data structures
 
 data Tree a = Nil | Node a (Tree a) (Tree a)
     deriving (Show, Eq, Read)
 
-testTree = Node 5  
-            (Node 3  
-                (Node 1 Nil Nil)  
-                (Node 6 Nil Nil)  
-            )  
-            (Node 9  
-                (Node 8 Nil Nil)  
-                (Node 10 Nil Nil)  
-            )  
+testTree = Node 5
+            (Node 3
+                (Node 1 Nil Nil)
+                (Node 6 Nil Nil)
+            )
+            (Node 9
+                (Node 8 Nil Nil)
+                (Node 10 Nil Nil)
+            )
 
 -- reduce the tree down to one single monoid value
 instance F.Foldable Tree where
@@ -117,7 +117,7 @@ instance F.Foldable Tree where
 -- foldl f z t = appEndo (getDual (foldMap (Dual . Endo . flip f) t)) z
 
 
--- because Any and All are Monoid values, 
+-- because Any and All are Monoid values,
 -- we can use foldMap to extract info from our data structure
 e3 = foldMap (\x -> Any $ x == 10) testTree
 e4 = foldMap (\x -> All $ x > 0) testTree

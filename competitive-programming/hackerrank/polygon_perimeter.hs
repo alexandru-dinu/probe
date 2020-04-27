@@ -3,7 +3,7 @@ type Points = [Point]
 
 get :: [Float] -> Points
 get [] = []
-get (x:y:rest) = (x,y):(get rest)
+get (x:y:rest) = (x,y) : get rest
 
 shift :: [a] -> [a]
 shift (x:xs) = xs ++ [x]
@@ -15,4 +15,4 @@ solve :: Points -> Float
 solve ps = sum $ zipWith dist ps (shift ps)
 
 main :: IO()
-main = interact $ show . solve . get . map read . concat . map words . tail . lines
+main = interact $ show . solve . get . map read . concatMap words . tail . lines

@@ -1,4 +1,4 @@
-import Data.Maybe (fromMaybe)
+import Data.Maybe (fromMaybe, isJust)
 import Data.List (sort)
 
 binarySearch :: Ord a => [a] -> a -> Maybe Int
@@ -13,7 +13,7 @@ binarySearch xs x
         midval = xs !! mid
 
 exists :: Ord a => [a] -> a -> Bool
-exists xs x = binarySearch xs x /= Nothing
+exists xs x = isJust $ binarySearch xs x
 
 indexOf :: Ord a => [a] -> a -> Int
 indexOf xs x = fromMaybe (-1) $ binarySearch (sort xs) x
