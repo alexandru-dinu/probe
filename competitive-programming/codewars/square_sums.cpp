@@ -10,9 +10,11 @@
  * - https://www.youtube.com/watch?v=G1m7goLCJDY
  */
 
-using num_t     = int;
-using set_t     = std::set<num_t>;
-using graph_t   = std::unordered_map<num_t, set_t>;
+
+using num_t    = int;
+using set_t    = std::set<num_t>;
+using graph_t  = std::unordered_map<num_t, set_t>;
+
 
 inline void add_node(num_t node, graph_t& g, const set_t& squares) {
     g[node] = set_t();
@@ -25,7 +27,7 @@ inline void add_node(num_t node, graph_t& g, const set_t& squares) {
     }
 }
 
-inline std::vector<num_t> (graph_t& g, num_t start, std::vector<num_t> acc) {
+inline std::vector<num_t> get_path(graph_t& g, num_t start, std::vector<num_t> acc) {
     if (std::find(acc.begin(), acc.end(), start) != acc.end())
         return {};
 
@@ -35,11 +37,10 @@ inline std::vector<num_t> (graph_t& g, num_t start, std::vector<num_t> acc) {
         return acc;
 
     for (auto& next : g[start]) {
-        auto p = (g, next, acc);
-        if (not p.empty())
+        auto p = get_path(g, next, acc);
+        if (p.size() > 0)
             return p;
     }
-
 
     return {};
 }
@@ -59,7 +60,7 @@ std::vector<int> square_sums_row(int N)
 
     for (num_t s = 1; s <= N; s++) {
         std::vector<num_t> acc;
-        auto p = (g, s, acc);
+        auto p = get_path(g, s, acc);
 
         if (not p.empty())
             return p;
@@ -76,7 +77,6 @@ int main(int, char** argv) {
     for (auto x: sol)
         std::cout << x << " ";
     std::cout << "\n";
-
 
     return 0;
 }
