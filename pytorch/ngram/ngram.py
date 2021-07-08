@@ -17,15 +17,18 @@ to_lower = lambda s: list(map(lambda i: i.lower(), s))
 strip_pct = lambda s: "".join(list(filter(str.isalpha, s)))
 
 # read and normalize corpus
-corpus = reduce(operator.add, [
-    list(map(strip_pct, map(to_lower, l.strip().split())))
-    for l in open(file, "rt").readlines()
-])
+corpus = reduce(
+    operator.add,
+    [
+        list(map(strip_pct, map(to_lower, l.strip().split())))
+        for l in open(file, "rt").readlines()
+    ],
+)
 
 ngrams = [
     (
-        tuple(corpus[i:i + CONTEXT_SIZE]),  # prev n-1 words
-        corpus[i + CONTEXT_SIZE]  # pred n'th word
+        tuple(corpus[i : i + CONTEXT_SIZE]),  # prev n-1 words
+        corpus[i + CONTEXT_SIZE],  # pred n'th word
     )
     for i in range(len(corpus) - CONTEXT_SIZE)
 ]
@@ -55,7 +58,9 @@ class NGram(nn.Module):
 
 # --
 
-ngram_model = NGram(vocab_size=len(vocabulary), context_size=CONTEXT_SIZE, emb_dim=EMBEDDING_DIM)
+ngram_model = NGram(
+    vocab_size=len(vocabulary), context_size=CONTEXT_SIZE, emb_dim=EMBEDDING_DIM
+)
 
 criterion = nn.NLLLoss()
 optimizer = optim.SGD(ngram_model.parameters(), lr=1e-3)
@@ -95,9 +100,19 @@ for i in range(len(ngrams)):
 
     if pred_idx == word_to_idx[next_word]:
         acc += 1
-        print(colored('[%5d] real: [%s], predicted: [%s]' % (i + 1, next_word, pred_word), "green"))
+        print(
+            colored(
+                "[%5d] real: [%s], predicted: [%s]" % (i + 1, next_word, pred_word),
+                "green",
+            )
+        )
     else:
-        print(colored('[%5d] real: [%s], predicted: [%s]' % (i + 1, next_word, pred_word), "red"))
+        print(
+            colored(
+                "[%5d] real: [%s], predicted: [%s]" % (i + 1, next_word, pred_word),
+                "red",
+            )
+        )
 
 print("\nACC = %.8f\n" % (1.0 * acc / len(ngrams)))
 

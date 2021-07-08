@@ -6,19 +6,15 @@ https://play.google.com/store/apps/details?id=com.sm.calculateme&hl=en
 import sys
 
 
-sign        = lambda x : (1, -1)[x < 0]
-strip_sign  = lambda x : str(x)[1:] if x < 0 else str(x)
-
-
 class Ops:
     def __init__(self, funcs):
         self.funcs = funcs
 
-    def expand(self, x):
-        return [(name, f(x)) for (name, f) in self.funcs.items()]
-
     def __len__(self):
         return len(self.funcs)
+
+    def expand(self, x):
+        return [(name, f(x)) for (name, f) in self.funcs.items()]
 
 
 class Node:
@@ -27,6 +23,14 @@ class Node:
         self.name = name
         self.kids = kids
         self.path = path
+
+
+def sign(x):
+    return (1, -1)[x < 0]
+
+
+def strip_sign(x):
+    return str(x)[1:] if x < 0 else str(x)
 
 
 def cons_tree(initial, target, moves, ops):
@@ -65,7 +69,7 @@ def print_tree(tree):
 
 
 def print_tree_ex(tree, indent):
-    ind = "".join([' ' for i in range(indent)])
+    ind = "".join([" " for i in range(indent)])
     print(ind, tree.path, " -> ", str(tree.value))
 
     for k in tree.kids:
@@ -82,12 +86,12 @@ def main(initial, target, moves, ops):
         print(f"[{i}]: {solution}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     lines = [l.strip() for l in open(sys.argv[1]).readlines()[1:]]
 
     initial = int(lines[0])
-    target  = int(lines[1])
-    moves   = int(lines[2])
-    ops     = Ops(eval(" ".join([l for l in lines[3:] if len(l) > 0 and l[0] != '#'])))
+    target = int(lines[1])
+    moves = int(lines[2])
+    ops = Ops(eval(" ".join([l for l in lines[3:] if len(l) > 0 and l[0] != "#"])))
 
     main(initial, target, moves, ops)

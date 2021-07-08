@@ -27,9 +27,3 @@ nextEdgesFrom n g = filter (\x -> from x == n) g
 -- | test data
 
 g = parseGraph "a b 1\nb c 2\na c 1.5"
-
--- | algorithm
-
--- dijkstra from to graph -> shortest path
-dijkstra :: Node -> Node -> Graph -> [Edge]
-dijkstra = undefined

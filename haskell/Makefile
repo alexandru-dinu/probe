@@ -1,7 +1,5 @@
 .PHONY: clean
 
-all: is_prime.out
-
 %.out: %.hs
 	ghc -dynamic $^ -o $@
 

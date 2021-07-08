@@ -24,9 +24,7 @@ word_to_idx = {word: i for i, word in enumerate(vocab)}
 
 data = []
 for i in range(CONTEXT_SIZE, len(raw_text) - CONTEXT_SIZE):
-    context = [
-        raw_text[i - 2], raw_text[i - 1], raw_text[i + 1], raw_text[i + 2]
-    ]
+    context = [raw_text[i - 2], raw_text[i - 1], raw_text[i + 1], raw_text[i + 2]]
     target = raw_text[i]
     data.append((context, target))
 
@@ -58,8 +56,8 @@ criterion = nn.NLLLoss()
 optimizer = optim.SGD(model.parameters(), lr=1e-3)
 
 for epoch in range(100):
-    print('epoch {}'.format(epoch))
-    print('*' * 10)
+    print("epoch {}".format(epoch))
+    print("*" * 10)
     running_loss = 0
     for word in data:
         context, target = word
@@ -76,4 +74,4 @@ for epoch in range(100):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-    print('loss: {:.6f}'.format(running_loss / len(data)))
+    print("loss: {:.6f}".format(running_loss / len(data)))

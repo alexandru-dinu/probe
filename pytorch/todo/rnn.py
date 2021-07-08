@@ -23,13 +23,15 @@ class Model(nn.Module):
         return Variable(torch.zeros(1, 1, 4))
 
 
-idx2char = ['h', 'e', 'l', 'o']
+idx2char = ["h", "e", "l", "o"]
 
 x_data = [0, 1, 2, 2]
-one_hot_lookup = [[1, 0, 0, 0],  # 0
-                  [0, 1, 0, 0],  # 1
-                  [0, 0, 1, 0],  # 2
-                  [0, 0, 0, 1]]  # 3
+one_hot_lookup = [
+    [1, 0, 0, 0],  # 0
+    [0, 1, 0, 0],  # 1
+    [0, 0, 1, 0],  # 2
+    [0, 0, 0, 1],
+]  # 3
 
 y_data = [1, 2, 2, 3]
 x_one_hot = [one_hot_lookup[x] for x in x_data]

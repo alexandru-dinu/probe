@@ -1,3 +1,5 @@
+import System.Environment (getArgs)
+
 isqrt :: Integer -> Integer
 isqrt = ceiling . sqrt . fromIntegral
 
@@ -8,5 +10,5 @@ isPrime n = case mod n 2 of
 
 main :: IO()
 main = do
-    n <- getLine
+    n:_ <- getArgs
     print $ isPrime (read n :: Integer)

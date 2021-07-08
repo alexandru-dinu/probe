@@ -1,37 +1,40 @@
 import sys
-from tqdm import tqdm
-from operator import itemgetter
 from collections import Counter
-import numpy as np
+from operator import itemgetter
+
 import matplotlib.pyplot as plt
+import numpy as np
 import seaborn as sns
+from tqdm import tqdm
+
 sns.set()
 
 rules = {
     # ladders
-    2 : 19,
-    7 : 27,
-    17 : 38,
-    26 : 46,
-    40 : 82,
-    44 : 76,
-    50 : 92,
-    53 : 88,
-    75 : 86,
+    2: 19,
+    7: 27,
+    17: 38,
+    26: 46,
+    40: 82,
+    44: 76,
+    50: 92,
+    53: 88,
+    75: 86,
     # snakes
-    98 : 43,
-    94 : 45,
-    91 : 52,
-    84 : 47,
-    74 : 4,
-    69 : 33,
-    49 : 9,
-    39 : 15
+    98: 43,
+    94: 45,
+    91: 52,
+    84: 47,
+    74: 4,
+    69: 33,
+    49: 9,
+    39: 15,
 }
 
 num_trials = int(sys.argv[1])
 count = Counter()
 avgpath = 0
+
 
 def play_game():
     pos = 0
@@ -59,5 +62,5 @@ print("most common sq = {}".format(max(count.items(), key=itemgetter(1))[0]))
 cells, passes = zip(*count.items())
 
 plt.stem(cells, passes, use_line_collection=True)
-plt.xticks(np.arange(0, max(cells)+1, 2))
+plt.xticks(np.arange(0, max(cells) + 1, 2))
 plt.show()

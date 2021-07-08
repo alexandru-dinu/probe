@@ -6,9 +6,9 @@ from data_utils import Corpus
 
 seq_length = 30
 
-train_file = 'train.txt'
-valid_file = 'valid.txt'
-test_file = 'test.txt'
+train_file = "train.txt"
+valid_file = "valid.txt"
+test_file = "test.txt"
 train_corpus = Corpus()
 valid_corpus = Corpus()
 test_corpus = Corpus()
@@ -25,8 +25,7 @@ class languagemodel(nn.Module):
     def __init__(self, vocab_size, embed_dim, hidden_size, num_layers):
         super(languagemodel, self).__init__()
         self.embed = nn.Embedding(vocab_size, embed_dim)
-        self.lstm = nn.LSTM(embed_dim, hidden_size, num_layers,
-            batch_first=True)
+        self.lstm = nn.LSTM(embed_dim, hidden_size, num_layers, batch_first=True)
         self.linear = nn.Linear(hidden_size, vocab_size)
 
     def forward(self, x, h):
@@ -51,19 +50,17 @@ def detach(states):
 
 
 for epoch in range(5):
-    print('epoch {}'.format(epoch + 1))
-    print('*' * 10)
+    print("epoch {}".format(epoch + 1))
+    print("*" * 10)
     running_loss = 0
-    states = (Variable(torch.zeros(1,
-        20,
-        1024)).cuda(),
-              Variable(torch.zeros(1,
-                  20,
-                  1024)).cuda())
+    states = (
+        Variable(torch.zeros(1, 20, 1024)).cuda(),
+        Variable(torch.zeros(1, 20, 1024)).cuda(),
+    )
 
     for i in range(0, train_id.size(1) - 2 * seq_length, seq_length):
-        input_x = train_id[:, i:(i + seq_length)]
-        label = train_id[:, (i + seq_length):(i + 2 * seq_length)]
+        input_x = train_id[:, i : (i + seq_length)]
+        label = train_id[:, (i + seq_length) : (i + 2 * seq_length)]
         if torch.cuda.is_available():
             input_x = Variable(input_x).cuda()
             label = Variable(label).cuda()
@@ -85,6 +82,9 @@ for epoch in range(5):
 
         step = (i + 1) // seq_length
         if step % 100 == 0:
-            print('Epoch [{}/{}], Step[{}/{}], Loss: {}'
-                .format(epoch + 1, 5, step, num_batches, loss.data[0]))
-    print('Loss: {}'.format(running_loss))
+            print(
+                "Epoch [{}/{}], Step[{}/{}], Loss: {}".format(
+                    epoch + 1, 5, step, num_batches, loss.data[0]
+                )
+            )
+    print("Loss: {}".format(running_loss))

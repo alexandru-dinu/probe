@@ -5,7 +5,7 @@ from torch.autograd import Variable
 
 training_data = [
     ("The dog ate the apple".split(), ["DET", "NN", "V", "DET", "NN"]),
-    ("Everybody read that book".split(), ["NN", "V", "DET", "NN"])
+    ("Everybody read that book".split(), ["NN", "V", "DET", "NN"]),
 ]
 
 word_to_idx = {}
@@ -17,7 +17,7 @@ for context, tag in training_data:
     for label in tag:
         if label not in tag_to_idx:
             tag_to_idx[label] = len(tag_to_idx)
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
+alphabet = "abcdefghijklmnopqrstuvwxyz"
 character_to_idx = {}
 for i in range(len(alphabet)):
     character_to_idx[alphabet[i]] = i
@@ -36,8 +36,7 @@ class CharLSTM(nn.Module):
 
 
 class LSTMTagger(nn.Module):
-    def __init__(self, n_word, n_char, char_dim, n_dim, char_hidden, n_hidden,
-                 n_tag):
+    def __init__(self, n_word, n_char, char_dim, n_dim, char_hidden, n_hidden, n_tag):
         super(LSTMTagger, self).__init__()
         self.word_embedding = nn.Embedding(n_word, n_dim)
         self.char_lstm = CharLSTM(n_char, char_dim, char_hidden)
@@ -72,7 +71,8 @@ class LSTMTagger(nn.Module):
 
 
 model = LSTMTagger(
-    len(word_to_idx), len(character_to_idx), 10, 100, 50, 128, len(tag_to_idx))
+    len(word_to_idx), len(character_to_idx), 10, 100, 50, 128, len(tag_to_idx)
+)
 if torch.cuda.is_available():
     model = model.cuda()
 criterion = nn.CrossEntropyLoss()
@@ -86,8 +86,8 @@ def make_sequence(x, dic):
 
 
 for epoch in range(300):
-    print('*' * 10)
-    print('epoch {}'.format(epoch + 1))
+    print("*" * 10)
+    print("epoch {}".format(epoch + 1))
     running_loss = 0
     for data in training_data:
         word, tag = data
@@ -104,7 +104,7 @@ for epoch in range(300):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-    print('Loss: {}'.format(running_loss / len(data)))
+    print("Loss: {}".format(running_loss / len(data)))
 print()
 input = make_sequence("Everybody ate the apple".split(), word_to_idx)
 if torch.cuda.is_available():

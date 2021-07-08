@@ -19,29 +19,29 @@ class Dictionary(object):
 
 
 class Corpus(object):
-    def __init__(self, path='./data'):
+    def __init__(self, path="./data"):
         self.dic = Dictionary()
-        self.train = os.path.join(path, 'train.txt')
-        self.valid = os.path.join(path, 'valid.txt')
-        self.test = os.path.join(path, 'test.txt')
+        self.train = os.path.join(path, "train.txt")
+        self.valid = os.path.join(path, "valid.txt")
+        self.test = os.path.join(path, "test.txt")
         self.path = path
 
     def get_data(self, file, batch_size=20):
         file = os.path.join(self.path, file)
         # get the word dictionary
-        with open(file, 'r') as f:
+        with open(file, "r") as f:
             num_word = 0
             for line in f:
-                word_list = line.split() + ['<eos>']
+                word_list = line.split() + ["<eos>"]
                 num_word += len(word_list)
                 self.dic.add_word(word_list)
 
         token = torch.LongTensor(num_word)
         # get the whole sentence corpus
-        with open(file, 'r') as f:
+        with open(file, "r") as f:
             index = 0
             for line in f:
-                word_list = line.split() + ['<eos>']
+                word_list = line.split() + ["<eos>"]
                 for word in word_list:
                     token[index] = self.dic.word_to_idx[word]
                     index += 1
