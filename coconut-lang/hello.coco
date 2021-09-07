@@ -1,0 +1,32 @@
+"Hello, World!" |> print
+
+def quicksort([]) = []
+
+@addpattern(quicksort)
+def quicksort([x] + xs) =
+    quicksort(lhs) + [x] + quicksort(rhs) where:
+        lhs = [i for i in xs if i < x]
+        rhs = [i for i in xs if i >= x]
+
+# testing
+import numpy as np
+
+[] |> quicksort |> print
+
+ys: float[] = (
+    np.random.uniform(size=(10,))
+    |> (x -> np.round(x, 3))
+    |> list
+    |> quicksort
+)
+ys |> print
+
+
+n: int = 10
+xs: np.ndarray = np.random.uniform(size=n)
+ys: np.ndarray = np.random.uniform(size=n)
+
+s1: float = xs |> reduce$((acc, x) -> acc + x)
+s2: float = xs |> .sum()
+
+assert (s1, s2) |*> np.isclose
