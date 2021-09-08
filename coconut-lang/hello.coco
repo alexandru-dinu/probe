@@ -1,4 +1,21 @@
+import numpy as np
+import math
+
+
 "Hello, World!" |> print
+
+# pattern matching
+def zip_with(_, [], _) = []
+
+@addpattern(zip_with)
+def zip_with(_, _, []) = []
+
+@addpattern(zip_with)
+def zip_with(f, [x] + xs, [y] + ys) =
+    [f(x, y)] + zip_with(f, xs, ys)
+
+zip_with((+), [1,2,3], [3,2,1]) |> print
+
 
 def quicksort([]) = []
 
@@ -8,8 +25,6 @@ def quicksort([x] + xs) =
         lhs = [i for i in xs if i < x]
         rhs = [i for i in xs if i >= x]
 
-# testing
-import numpy as np
 
 [] |> quicksort |> print
 
@@ -24,9 +39,19 @@ ys |> print
 
 n: int = 10
 xs: np.ndarray = np.random.uniform(size=n)
-ys: np.ndarray = np.random.uniform(size=n)
 
 s1: float = xs |> reduce$((acc, x) -> acc + x)
 s2: float = xs |> .sum()
 
 assert (s1, s2) |*> np.isclose
+
+# call f with its arguments reversed
+flip = (f, *args) -> f(*args[::-1])
+
+# pointfree version of reduce
+min_max = flip$(
+    reduce$((acc, x) -> (min(acc[0], x), max(acc[1], x))),
+    (np.inf, -np.inf),
+)
+
+[12, 20, 17, 19] |> min_max |*> math.gcd |> print
